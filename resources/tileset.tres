@@ -1,9 +1,9 @@
 [gd_resource type="TileSet" load_steps=3 format=3 uid="uid://m15e2oggq7pe"]
 
-[ext_resource type="Texture2D" uid="uid://bv0fx8nkfysqs" path="res://assets/Super Grotto Escape Files/Environment/Layers/tileset.png" id="1_8tdwe"]
+[ext_resource type="Texture2D" uid="uid://bv0fx8nkfysqs" path="res://assets/super_groto_scape/Environment/Layers/tileset.png" id="1_7lt8y"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ankih"]
-texture = ExtResource("1_8tdwe")
+texture = ExtResource("1_7lt8y")
 2:12/0 = 0
 2:12/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:12/0/physics_layer_0/angular_velocity = 0.0
