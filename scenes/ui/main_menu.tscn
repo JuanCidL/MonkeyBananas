@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dl8bgs3qdcvkg"]
 
-[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_d3lyh"]
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_xrf5t"]
 
 [node name="MainMenu" type="MarginContainer"]
 anchors_preset = 15
@@ -8,7 +8,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_d3lyh")
+script = ExtResource("1_xrf5t")
 
 [node name="SelectButtons" type="VBoxContainer" parent="."]
 layout_mode = 2
