@@ -6,10 +6,18 @@ extends CharacterBody2D
 @export var acceleration = 800
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-@onready var sprite = $Sprite2D
+@onready var sprite = $Pivot/Sprite2D
 @onready var animation_player = $AnimationPlayer
 @onready var animation_tree = $AnimationTree
 @onready var playback = animation_tree.get("parameters/playback")
+@onready var pivot = $Pivot
+
+
+@onready var bullet_spawn: Marker2D = $Pivot/BulletSpawn
+
+@export var bullet_scene: PackedScene
+
+
 
 func _ready():
 	animation_tree.set("active", true)
@@ -27,10 +35,13 @@ func _physics_process(delta):
 	
 	move_and_slide()
 	
+	if Input.is_action_just_pressed("bullet"):
+		fire()
+	
 	# animation
 	
 	if velocity.x != 0 and move_input:
-		sprite.scale.x = move_input
+		pivot.scale.x = move_input
 	
 	
 	if is_on_floor():
@@ -43,6 +54,12 @@ func _physics_process(delta):
 			playback.travel("jump")
 		else:
 			playback.travel("fall")
+			
+func fire():
+	var bullet = bullet_scene.instantiate()
+	get_parent().add_child(bullet)
+	bullet.global_position = bullet_spawn.global_position
+	bullet.rotation = bullet_spawn.global_position.direction_to(get_global_mouse_position()).angle()
 
 """"
 func _physics_process(delta):
