@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://pidk2fxu1tlg"]
+[gd_scene load_steps=4 format=3 uid="uid://cyr2fv7ljvh4g"]
 
 [ext_resource type="Texture2D" uid="uid://2ef7x4imm3h2" path="res://assets/backgrounds/Space Background 1.png" id="1_dcnhk"]
 [ext_resource type="PackedScene" uid="uid://f8pli3qn73wm" path="res://scenes/terrain/tile_map_grotto_escape.tscn" id="1_vbb5l"]

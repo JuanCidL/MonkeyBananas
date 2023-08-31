@@ -61,6 +61,11 @@ func fire():
 	bullet.global_position = bullet_spawn.global_position
 	bullet.rotation = bullet_spawn.global_position.direction_to(get_global_mouse_position()).angle()
 
+## Llama al setter de win
+func on_win_condition():
+	Global.set_win(true)
+	Global.win = false
+
 """"
 func _physics_process(delta):
 	# Add the gravity.

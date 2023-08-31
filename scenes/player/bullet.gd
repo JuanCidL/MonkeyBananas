@@ -11,5 +11,5 @@ func _physics_process(delta: float) -> void:
 	position += transform.x * speed * delta
 
 
-func _on_body_entered(body: Node2D):
+func _on_body_entered(_body: Node2D):
 	queue_free()
