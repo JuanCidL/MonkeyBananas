@@ -25,5 +25,4 @@ func _on_body_entered(body: Node2D):
 		#get_parent().find_child("Player").bullet_is_spawned = false
 	if bounce_count == max_bounce:
 		queue_free()
-	
-	
+

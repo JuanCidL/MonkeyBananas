@@ -1,0 +1,21 @@
+[gd_scene load_steps=6 format=3 uid="uid://cbqdksajvqvfn"]
+
+[ext_resource type="PackedScene" uid="uid://f8pli3qn73wm" path="res://scenes/terrain/tile_map_grotto_escape.tscn" id="1_rgqay"]
+[ext_resource type="PackedScene" uid="uid://0oshvretw2uy" path="res://scenes/terrain/win_condition.tscn" id="2_u46n8"]
+[ext_resource type="PackedScene" uid="uid://deh8jc38wesno" path="res://scenes/player/player.tscn" id="3_6phgo"]
+[ext_resource type="PackedScene" uid="uid://dref8rwyw1vpf" path="res://scenes/ui/end_level_screen.tscn" id="4_ujwsr"]
+[ext_resource type="PackedScene" uid="uid://cyr2fv7ljvh4g" path="res://scenes/levels/demo_gun.tscn" id="5_ycs12"]
+
+[node name="WinDemo" type="CanvasLayer"]
+
+[node name="TileMap" parent="." instance=ExtResource("1_rgqay")]
+layer_0/tile_data = PackedInt32Array(1048581, 589825, 4, 1048582, 589825, 4, 1048583, 589825, 4, 1048584, 589825, 4, 1048585, 589825, 4, 1048586, 589825, 4, 1048587, 589825, 4, 1048588, 589825, 4, 1048589, 589825, 4, 1048590, 589825, 4, 1048591, 589825, 4, 1048592, 589825, 4, 1048593, 589825, 4, 1114129, 589825, 9, 1114128, 589825, 9, 1114127, 589825, 9, 1114126, 589825, 9, 1114125, 589825, 9, 1114124, 589825, 9, 1114123, 589825, 9, 1114122, 589825, 9, 1114121, 589825, 9, 1114120, 589825, 9, 1114119, 589825, 9, 1114118, 589825, 9, 1114117, 589825, 9, 1114116, 589825, 9, 1114115, 524289, 9, 1048580, 589825, 4, 1048579, 524289, 4, 1048594, 589825, 4, 1048595, 589825, 4, 1048596, 655361, 4, 1114132, 655361, 9, 1114131, 589825, 9, 1114130, 589825, 9)
+
+[node name="WinCondition" parent="." instance=ExtResource("2_u46n8")]
+position = Vector2(276, 175)
+
+[node name="Player" parent="." instance=ExtResource("3_6phgo")]
+position = Vector2(104, 80)
+
+[node name="EndLevelScreen" parent="." instance=ExtResource("4_ujwsr")]
+n_lvl = ExtResource("5_ycs12")

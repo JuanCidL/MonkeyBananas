@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://4gg7cww82dfq"]
 
 [ext_resource type="PackedScene" uid="uid://f8pli3qn73wm" path="res://scenes/terrain/tile_map_grotto_escape.tscn" id="1_4stfx"]
-[ext_resource type="PackedScene" uid="uid://dsljbg2limyk4" path="res://scenes/player/player.tscn" id="2_mebwp"]
+[ext_resource type="PackedScene" uid="uid://deh8jc38wesno" path="res://scenes/player/player.tscn" id="2_mebwp"]
 
 [node name="DemoLevel" type="Node2D"]
 
