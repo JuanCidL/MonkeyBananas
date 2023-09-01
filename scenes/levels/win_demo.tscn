@@ -1,10 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cbqdksajvqvfn"]
+[gd_scene load_steps=6 format=3 uid="uid://bdwpy86t3o0ui"]
 
 [ext_resource type="PackedScene" uid="uid://f8pli3qn73wm" path="res://scenes/terrain/tile_map_grotto_escape.tscn" id="1_rgqay"]
-[ext_resource type="PackedScene" uid="uid://0oshvretw2uy" path="res://scenes/terrain/win_condition.tscn" id="2_u46n8"]
+[ext_resource type="PackedScene" path="res://scenes/terrain/win_condition.tscn" id="2_u46n8"]
 [ext_resource type="PackedScene" uid="uid://deh8jc38wesno" path="res://scenes/player/player.tscn" id="3_6phgo"]
-[ext_resource type="PackedScene" uid="uid://dref8rwyw1vpf" path="res://scenes/ui/end_level_screen.tscn" id="4_ujwsr"]
-[ext_resource type="PackedScene" uid="uid://cyr2fv7ljvh4g" path="res://scenes/levels/demo_gun.tscn" id="5_ycs12"]
+[ext_resource type="PackedScene" path="res://scenes/ui/end_level_screen.tscn" id="4_ujwsr"]
+[ext_resource type="PackedScene" uid="uid://pidk2fxu1tlg" path="res://scenes/levels/demo_gun.tscn" id="5_ycs12"]
 
 [node name="WinDemo" type="CanvasLayer"]
 

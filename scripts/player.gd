@@ -57,11 +57,6 @@ func _physics_process(delta):
 			playback.travel("fall")
 			
 func fire():
-	var bullet = bullet_scene.instantiate()
-	get_parent().add_child(bullet)
-	bullet.global_position = bullet_spawn.global_position
-	bullet.rotation = bullet_spawn.global_position.direction_to(get_global_mouse_position()).angle()
-
 	if not bullet_is_spawned:
 		var bullet = bullet_scene.instantiate()
 		get_parent().add_child(bullet)
