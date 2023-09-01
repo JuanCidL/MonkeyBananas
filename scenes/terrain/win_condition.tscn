@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://0oshvretw2uy"]
+[gd_scene load_steps=12 format=3 uid="uid://0oshvretw2uy"]
 
 [ext_resource type="Script" path="res://scenes/terrain/win_condition.gd" id="1_24g43"]
 [ext_resource type="Texture2D" uid="uid://m2tqers2ukps" path="res://assets/super_groto_scape/Environment/Force-Field/force-field1.png" id="1_akm35"]
@@ -120,6 +120,9 @@ _data = {
 "base": SubResource("Animation_3i641")
 }
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_adogq"]
+animation = &"base"
+
 [node name="WinCondition" type="Area2D"]
 collision_layer = 4
 collision_mask = 4
@@ -128,12 +131,12 @@ script = ExtResource("1_24g43")
 [node name="Left" type="Sprite2D" parent="."]
 position = Vector2(-3, 0)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_akm35")
+texture = ExtResource("5_jd6uk")
 
 [node name="Right" type="Sprite2D" parent="."]
 position = Vector2(5, 0)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_akm35")
+texture = ExtResource("5_jd6uk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_jwhuv")
@@ -142,3 +145,9 @@ shape = SubResource("RectangleShape2D_jwhuv")
 libraries = {
 "": SubResource("AnimationLibrary_ik7fd")
 }
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeAnimation_adogq")
+anim_player = NodePath("../AnimationPlayer")
+advance_expression_base_node = NodePath("../AnimationPlayer")
+active = true
