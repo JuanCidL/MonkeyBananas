@@ -63,6 +63,8 @@ func fire():
 		bullet.global_position = bullet_spawn.global_position
 		bullet.rotation = bullet_spawn.global_position.direction_to(get_global_mouse_position()).angle()
 		bullet_is_spawned = true
+		
+		bullet.tree_exited.connect(func(): bullet_is_spawned = false)
 """"
 func _physics_process(delta):
 	# Add the gravity.
