@@ -10,6 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://cvyymjbsj5sht" path="res://assets/super_groto_scape/Characters/Enemies/sprites/Skeleton-Walk/skeleton-walk7.png" id="8_bkpa8"]
 [ext_resource type="Texture2D" uid="uid://dhbd2gxdy3mkw" path="res://assets/super_groto_scape/Characters/Enemies/sprites/Skeleton-Walk/skeleton-walk8.png" id="9_l737a"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aun7i"]
+height = 28.0
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_17jvx"]
 animations = [{
 "frames": [{
@@ -42,23 +45,31 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aun7i"]
-height = 24.0
-
 [node name="Mob" type="CharacterBody2D"]
 position = Vector2(0, -1)
+collision_layer = 2
 script = ExtResource("1_svniq")
 metadata/_edit_group_ = true
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_17jvx")
-animation = &"walk"
-frame_progress = 0.466008
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_aun7i")
 debug_color = Color(0.937255, 0.235294, 0.219608, 0.419608)
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="Pivot" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Pivot"]
+position = Vector2(0, -3)
+sprite_frames = SubResource("SpriteFrames_17jvx")
+animation = &"walk"
+frame_progress = 0.466008
+
+[node name="WallRay" type="RayCast2D" parent="Pivot"]
+target_position = Vector2(12, 0)
+
+[node name="FloorRay" type="RayCast2D" parent="Pivot"]
+position = Vector2(6, 6)
+target_position = Vector2(0, 10)
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
