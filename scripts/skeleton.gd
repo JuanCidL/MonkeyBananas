@@ -25,7 +25,7 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y +=  gravity*delta
 	
-	if wall_ray.is_colliding() or not floor_ray.is_colliding():
+	if wall_ray.is_colliding() or (not floor_ray.is_colliding() and is_on_floor()):
 		direction *= -1
 		pivot.scale.x *= -1
 		
