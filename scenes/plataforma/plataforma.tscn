@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvakqgt6bhjq1"]
+
+[ext_resource type="Script" path="res://scripts/plataforma.gd" id="1_mk4kx"]
+[ext_resource type="Texture2D" uid="uid://cktsfebpu3jap" path="res://assets/super_groto_scape/Props/Sprites/floating-platform.png" id="2_dcpul"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fsvyw"]
+size = Vector2(16, 20)
+
+[node name="Plataforma" type="AnimatableBody2D"]
+script = ExtResource("1_mk4kx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_fsvyw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 1)
+texture = ExtResource("2_dcpul")
