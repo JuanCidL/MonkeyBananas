@@ -4,7 +4,7 @@ extends MarginContainer
 @onready var credits = $SelectButtons/Credits
 @onready var exit = $SelectButtons/Exit
 
-const demo = preload("res://scenes/levels/demo_level.tscn")
+const demo = preload("res://scenes/levels/win_demo.tscn")
 
 func _ready():
 	play.pressed.connect(_on_play_pressed)
