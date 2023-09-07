@@ -17,7 +17,7 @@ func _physics_process(delta: float) -> void:
 	position += transform.x * speed * delta
 
 
-func _on_body_entered(body: Node2D):
+func _on_body_entered(_body: Node2D):
 	if ray_cast_2d.is_colliding():
 		var normal = ray_cast_2d.get_collision_normal()
 		rotation = transform.x.bounce(normal).angle()
