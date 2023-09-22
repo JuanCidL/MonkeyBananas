@@ -40,8 +40,10 @@ func _physics_process(delta):
 	
 	move_and_slide()
 	
-	if Input.is_action_just_pressed("bullet"):
-		fire()
+	if Input.is_action_just_pressed("bullet") and not bullet_is_spawned:
+		playback.travel("shoot")
+		#fire()
+		return
 	
 	if Input.is_action_just_pressed("time_stop"):
 		tstop()

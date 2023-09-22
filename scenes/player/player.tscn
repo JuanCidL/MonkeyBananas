@@ -1,10 +1,13 @@
-[gd_scene load_steps=29 format=3 uid="uid://deh8jc38wesno"]
+[gd_scene load_steps=36 format=3 uid="uid://deh8jc38wesno"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_hs4xo"]
 [ext_resource type="Texture2D" uid="uid://l5amyegcs864" path="res://assets/super_groto_scape/Characters/Player/spritesheets/player-idle.png" id="2_iwq45"]
 [ext_resource type="PackedScene" uid="uid://chqwn1lfvwcxd" path="res://scenes/player/bullet.tscn" id="2_uplmb"]
 [ext_resource type="Texture2D" uid="uid://cle6gji1l4adi" path="res://assets/super_groto_scape/Characters/Player/spritesheets/player-jump.png" id="3_8s5rb"]
 [ext_resource type="Texture2D" uid="uid://oj8qb27lnamg" path="res://assets/super_groto_scape/Characters/Player/spritesheets/player-run.png" id="4_rvdr0"]
+[ext_resource type="Texture2D" uid="uid://b0jvsb2pwhup2" path="res://assets/super_groto_scape/Characters/Player/sprites/Player-shoot/player-shoot1.png" id="6_pl6pw"]
+[ext_resource type="Texture2D" uid="uid://eor4yefjadt2" path="res://assets/super_groto_scape/Characters/Player/sprites/Player-shoot/player-shoot2.png" id="7_unphc"]
+[ext_resource type="Texture2D" uid="uid://chhc1vpsekxwy" path="res://assets/super_groto_scape/Characters/Player/sprites/Player-shoot/player-shoot3.png" id="8_sxh84"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m4kfc"]
 radius = 8.0
@@ -210,13 +213,68 @@ tracks/2/keys = {
 "values": [6]
 }
 
+[sub_resource type="Animation" id="Animation_7ojsa"]
+resource_name = "shoot"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("6_pl6pw"), ExtResource("7_unphc"), ExtResource("8_sxh84")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot/Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pivot/Sprite2D:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"fire"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fc6w1"]
 _data = {
 "RESET": SubResource("Animation_tswjk"),
 "fall": SubResource("Animation_6g361"),
 "idle": SubResource("Animation_hfead"),
 "jump": SubResource("Animation_b0cdu"),
-"run": SubResource("Animation_2hpu7")
+"run": SubResource("Animation_2hpu7"),
+"shoot": SubResource("Animation_7ojsa")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_uksdm"]
@@ -230,6 +288,9 @@ animation = &"jump"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_n4son"]
 animation = &"run"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0wkh2"]
+animation = &"shoot"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kd05o"]
 advance_mode = 2
@@ -255,6 +316,11 @@ reset = false
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kptjm"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_upkw5"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pi6ts"]
+switch_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_u7830"]
 states/End/position = Vector2(780, 100)
 states/fall/node = SubResource("AnimationNodeAnimation_uksdm")
@@ -265,8 +331,10 @@ states/jump/node = SubResource("AnimationNodeAnimation_c7a7d")
 states/jump/position = Vector2(317, -18)
 states/run/node = SubResource("AnimationNodeAnimation_n4son")
 states/run/position = Vector2(443, 193)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_kd05o"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_5s5dp"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_qui3a"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_1ok3e"), "run", "End", SubResource("AnimationNodeStateMachineTransition_1qkmi"), "jump", "fall", SubResource("AnimationNodeStateMachineTransition_x5etf"), "fall", "run", SubResource("AnimationNodeStateMachineTransition_3vrvb"), "run", "fall", SubResource("AnimationNodeStateMachineTransition_kg0nv"), "idle", "fall", SubResource("AnimationNodeStateMachineTransition_hvgkf"), "fall", "idle", SubResource("AnimationNodeStateMachineTransition_rvysm"), "run", "jump", SubResource("AnimationNodeStateMachineTransition_kptjm")]
-graph_offset = Vector2(-86, -63)
+states/shoot/node = SubResource("AnimationNodeAnimation_0wkh2")
+states/shoot/position = Vector2(339, 222)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_kd05o"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_5s5dp"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_qui3a"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_1ok3e"), "run", "End", SubResource("AnimationNodeStateMachineTransition_1qkmi"), "jump", "fall", SubResource("AnimationNodeStateMachineTransition_x5etf"), "fall", "run", SubResource("AnimationNodeStateMachineTransition_3vrvb"), "run", "fall", SubResource("AnimationNodeStateMachineTransition_kg0nv"), "idle", "fall", SubResource("AnimationNodeStateMachineTransition_hvgkf"), "fall", "idle", SubResource("AnimationNodeStateMachineTransition_rvysm"), "run", "jump", SubResource("AnimationNodeStateMachineTransition_kptjm"), "idle", "shoot", SubResource("AnimationNodeStateMachineTransition_upkw5"), "shoot", "idle", SubResource("AnimationNodeStateMachineTransition_pi6ts")]
+graph_offset = Vector2(-86, 9.28327)
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 4
@@ -276,6 +344,7 @@ bullet_scene = ExtResource("2_uplmb")
 [node name="Pivot" type="Node2D" parent="."]
 
 [node name="BulletSpawn" type="Marker2D" parent="Pivot"]
+position = Vector2(14, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Pivot"]
 position = Vector2(-1, -3)
@@ -295,3 +364,4 @@ libraries = {
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_u7830")
 anim_player = NodePath("../AnimationPlayer")
+active = true

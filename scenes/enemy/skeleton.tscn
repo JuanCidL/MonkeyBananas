@@ -63,7 +63,7 @@ debug_color = Color(0.937255, 0.235294, 0.219608, 0.419608)
 position = Vector2(-2, -3)
 sprite_frames = SubResource("SpriteFrames_17jvx")
 animation = &"walk"
-frame_progress = 0.627972
+frame_progress = 0.726454
 
 [node name="WallRay" type="RayCast2D" parent="Pivot"]
 target_position = Vector2(12, 0)
