@@ -7,15 +7,18 @@ extends Area2D
 @export var max_bounce = 3
 @export var bounce_count = 0
 @onready var explotion_spawner = preload("res://scenes/player/time_stop_effect.tscn")
+@onready var animated_sprite_2d = $AnimatedSprite2D
 
 
 
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
 	visible_on_screen_notifier_2d.screen_exited.connect(func(): queue_free())
+	animated_sprite_2d.play("shot")
 
 func _physics_process(delta: float) -> void:
 	position += transform.x * speed * delta
+	
 
 func _on_body_entered(_body: Node2D):
 	if ray_cast_2d.is_colliding():
