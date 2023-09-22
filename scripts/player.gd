@@ -16,6 +16,10 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var bullet_spawn: Marker2D = $Pivot/BulletSpawn
 @export var bullet_scene: PackedScene
 @onready var bullet_is_spawned : bool = false
+@onready var bullet
+
+@onready var explotion_is_spawned: bool = false
+@onready var explotion
 
 
 
@@ -39,6 +43,9 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("bullet"):
 		fire()
 	
+	if Input.is_action_just_pressed("time_stop"):
+		tstop()
+	
 	# animation
 	
 	if velocity.x != 0 and move_input:
@@ -58,13 +65,21 @@ func _physics_process(delta):
 			
 func fire():
 	if not bullet_is_spawned:
-		var bullet = bullet_scene.instantiate()
+		if explotion_is_spawned:
+			explotion.queue_free()
+			explotion_is_spawned = false
+		bullet = bullet_scene.instantiate()
 		get_parent().add_child(bullet)
 		bullet.global_position = bullet_spawn.global_position
 		bullet.rotation = bullet_spawn.global_position.direction_to(get_global_mouse_position()).angle()
 		bullet_is_spawned = true
 		
 		bullet.tree_exited.connect(func(): bullet_is_spawned = false)
+
+func tstop():
+	if bullet_is_spawned:
+		explotion = bullet.tstop()
+		explotion_is_spawned = true
 
 ## Llama al setter de win
 func on_win_condition():

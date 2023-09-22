@@ -6,6 +6,7 @@ extends Area2D
 @onready var visible_on_screen_notifier_2d = $VisibleOnScreenNotifier2D
 @export var max_bounce = 3
 @export var bounce_count = 0
+@onready var explotion_spawner = preload("res://scenes/player/time_stop_effect.tscn")
 
 
 
@@ -16,7 +17,6 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	position += transform.x * speed * delta
 
-
 func _on_body_entered(_body: Node2D):
 	if ray_cast_2d.is_colliding():
 		var normal = ray_cast_2d.get_collision_normal()
@@ -26,3 +26,9 @@ func _on_body_entered(_body: Node2D):
 	if bounce_count == max_bounce:
 		queue_free()
 
+func tstop():
+	var explotion = explotion_spawner.instantiate()
+	explotion.global_position = global_position
+	get_parent().add_child(explotion)
+	queue_free()
+	return explotion
