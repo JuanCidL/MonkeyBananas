@@ -11,8 +11,9 @@ extends Node2D
 @onready var gpu_particles_2d: CPUParticles2D = $GPUParticles2D
 
 func _ready():
+	area_2d.connect("area_entered", explode)
 	
-	var tween = create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_LINEAR)
+	var tween = create_tween().set_trans(Tween.TRANS_LINEAR)
 	playback.travel("run")
 	tween.tween_property(player_animations, "position", Vector2(360, player_animations.position.y), 3)
 	await tween.finished
@@ -21,7 +22,6 @@ func _ready():
 	await get_tree().create_timer(1.0).timeout
 	#playback.travel("shot")
 	bullet = bullet_scene.instantiate()
-	area_2d.connect("area_entered", explode)
 	var bullet_spawn_pos: Vector2 = pivot.get_child(0).global_position
 	
 	bullet.global_position = bullet_spawn_pos
@@ -36,7 +36,7 @@ func explode(body: Area2D):
 	var tween = create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_LINEAR).set_parallel()
 	var exp_tween = create_tween()
 	exp_tween.tween_property(explotion, "scale", Vector2(800, 800), 1)
-	tween.tween_property(player_animations, "position", Vector2(800, player_animations.position.y+40), 1)
-	tween.tween_property(player_animations, "rotation", 80, 1)
+	tween.tween_property(player_animations, "position", Vector2(600, player_animations.position.y+40), 1)
+	tween.tween_property(player_animations, "rotation", 30, 1)
 	await tween.finished
 	queue_free()
