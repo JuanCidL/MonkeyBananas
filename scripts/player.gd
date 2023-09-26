@@ -19,7 +19,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var bullet
 
 @onready var explotion_is_spawned: bool = false
-@onready var explotion
+@onready var explotion: Area2D
 
 
 
@@ -66,8 +66,9 @@ func _physics_process(delta):
 func fire():
 	if not bullet_is_spawned:
 		if explotion_is_spawned:
-			explotion.queue_free()
+			explotion.destroy()
 			explotion_is_spawned = false
+			
 		bullet = bullet_scene.instantiate()
 		get_parent().add_child(bullet)
 		bullet.global_position = bullet_spawn.global_position

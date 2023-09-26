@@ -1,0 +1,72 @@
+[gd_scene load_steps=11 format=3 uid="uid://0uaurdmc3uf3"]
+
+[ext_resource type="Script" path="res://scenes/ui/intro/intro.gd" id="1_7m5hy"]
+[ext_resource type="PackedScene" uid="uid://lolqjvp6d7ra" path="res://scenes/ui/player_animations.tscn" id="2_tbchr"]
+[ext_resource type="Shader" path="res://scenes/ui/intro/intro.gdshader" id="3_ag40c"]
+[ext_resource type="Shader" path="res://scenes/ui/intro/explotion.gdshader" id="4_t3b3g"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rbu1f"]
+radius = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pje4n"]
+shader = ExtResource("3_ag40c")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_kqbrp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j322j"]
+shader = ExtResource("4_t3b3g")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_nodtl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sw7go"]
+shader = ExtResource("4_t3b3g")
+
+[node name="Intro" type="Node2D"]
+script = ExtResource("1_7m5hy")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(256, 192)
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_rbu1f")
+
+[node name="PlayerAnimations" parent="." instance=ExtResource("2_tbchr")]
+position = Vector2(-18, 287)
+
+[node name="Pivot" parent="PlayerAnimations" index="0"]
+scale = Vector2(1, 1)
+
+[node name="Shader" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_pje4n")
+position = Vector2(0, -64)
+scale = Vector2(512, 512)
+texture = SubResource("CanvasTexture_kqbrp")
+centered = false
+
+[node name="Explotion" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_j322j")
+position = Vector2(256, 192)
+scale = Vector2(0.1, 0.1)
+texture = SubResource("CanvasTexture_nodtl")
+
+[node name="GPUParticles2D" type="CPUParticles2D" parent="."]
+material = SubResource("ShaderMaterial_sw7go")
+position = Vector2(256, 192)
+emitting = false
+amount = 200
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+lifetime_randomness = 0.5
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 80.0
+initial_velocity_max = 800.0
+orbit_velocity_max = 1.0
+radial_accel_min = 1.0
+radial_accel_max = 1.0
+scale_amount_min = 15.0
+scale_amount_max = 20.0
+
+[editable path="PlayerAnimations"]
