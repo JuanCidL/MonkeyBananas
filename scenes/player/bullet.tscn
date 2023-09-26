@@ -30,7 +30,7 @@ animations = [{
 }]
 
 [node name="bullet" type="Area2D"]
-collision_layer = 4
+collision_layer = 0
 script = ExtResource("1_qocjd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

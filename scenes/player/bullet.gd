@@ -12,7 +12,7 @@ extends Area2D
 
 
 func _ready() -> void:
-	body_entered.connect(_on_body_entered)
+	#body_entered.connect(_on_body_entered)
 	visible_on_screen_notifier_2d.screen_exited.connect(func(): queue_free())
 	animated_sprite_2d.play("shot")
 
@@ -20,7 +20,7 @@ func _physics_process(delta: float) -> void:
 	position += transform.x * speed * delta
 	
 
-func _on_body_entered(_body: Node2D):
+#func _on_body_entered(_body: Node2D):
 	if ray_cast_2d.is_colliding():
 		var normal = ray_cast_2d.get_collision_normal()
 		rotation = transform.x.bounce(normal).angle()
