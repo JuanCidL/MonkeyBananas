@@ -21,7 +21,9 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var explotion_is_spawned: bool = false
 @onready var explotion
 
-
+var health = 100
+@onready var is_invulnerable = false
+@onready var vulnerability = $Vulnerability
 
 
 func _ready():
@@ -88,7 +90,29 @@ func on_win_condition():
 	Global.set_win(true)
 	Global.win = false
   
+func get_health():
+	return health
+
+func set_health(n):
+	health = n
+
+func receive_damage( damage ):
+	if is_invulnerable:
+		return
+	vulnerability.start()
+	is_invulnerable = true
+	var new_health = get_health() - damage
+	set_health(new_health)
+	
+	if (health == 0 or health < 0):
+		health = 0
+		print('Died')
+	print('Ouch! ',  damage, ' Cur: ', health)
   
+func _on_vulnerability_timeout():
+	is_invulnerable = false
+
+
 
 """"
 func _physics_process(delta):
