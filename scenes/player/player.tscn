@@ -350,6 +350,7 @@ position = Vector2(14, 0)
 position = Vector2(-1, -3)
 texture = ExtResource("2_iwq45")
 hframes = 6
+frame = 3
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -365,3 +366,7 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_u7830")
 anim_player = NodePath("../AnimationPlayer")
 active = true
+
+[node name="Vulnerability" type="Timer" parent="."]
+
+[connection signal="timeout" from="Vulnerability" to="." method="_on_vulnerability_timeout"]
