@@ -7,4 +7,6 @@ func _ready():
 ## Callback para cuando el jugador entra en la win condition
 func _on_body_entered(body: Node2D):
 	if body.has_method("on_win_condition"):
+		$WinSound.play()
 		body.on_win_condition()
+		
