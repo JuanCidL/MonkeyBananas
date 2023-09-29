@@ -11,10 +11,13 @@ extends Area2D
 
 
 
+
+
 func _ready() -> void:
 	#body_entered.connect(_on_body_entered)
 	visible_on_screen_notifier_2d.screen_exited.connect(func(): queue_free())
 	animated_sprite_2d.play("shot")
+	Global.play_shot()
 
 func _physics_process(delta: float) -> void:
 	position += transform.x * speed * delta
@@ -30,6 +33,7 @@ func _physics_process(delta: float) -> void:
 		queue_free()
 
 func tstop():
+	Global.play_portal()
 	var explotion = explotion_spawner.instantiate()
 	explotion.global_position = global_position
 	get_parent().add_child(explotion)

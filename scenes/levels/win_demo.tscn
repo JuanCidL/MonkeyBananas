@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bdwpy86t3o0ui"]
+[gd_scene load_steps=8 format=3 uid="uid://bdwpy86t3o0ui"]
 
 [ext_resource type="Texture2D" uid="uid://2ef7x4imm3h2" path="res://assets/backgrounds/Space Background 1.png" id="1_qar4f"]
 [ext_resource type="PackedScene" uid="uid://f8pli3qn73wm" path="res://scenes/terrain/tile_map_grotto_escape.tscn" id="1_rgqay"]
 [ext_resource type="PackedScene" uid="uid://0oshvretw2uy" path="res://scenes/terrain/win_condition.tscn" id="2_u46n8"]
 [ext_resource type="PackedScene" uid="uid://deh8jc38wesno" path="res://scenes/player/player.tscn" id="3_6phgo"]
+[ext_resource type="AudioStream" uid="uid://cl6htg8npdoum" path="res://assets/sounds/sfx/Retro Success Melody 01 - sawtooth lead 1.wav" id="4_k8p1c"]
 [ext_resource type="PackedScene" uid="uid://dref8rwyw1vpf" path="res://scenes/ui/end_level_screen.tscn" id="4_ujwsr"]
 [ext_resource type="PackedScene" uid="uid://pidk2fxu1tlg" path="res://scenes/levels/demo_gun.tscn" id="5_ycs12"]
 
@@ -19,6 +20,11 @@ layer_1/name = "Bridge"
 
 [node name="WinCondition" parent="." instance=ExtResource("2_u46n8")]
 position = Vector2(488, 274)
+
+[node name="WinSound" type="AudioStreamPlayer2D" parent="WinCondition"]
+process_mode = 3
+position = Vector2(-488, -274)
+stream = ExtResource("4_k8p1c")
 
 [node name="Player" parent="." instance=ExtResource("3_6phgo")]
 position = Vector2(34, 258)
