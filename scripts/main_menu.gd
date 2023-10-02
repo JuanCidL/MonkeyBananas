@@ -22,13 +22,24 @@ func _ready():
 	intro.show()
 
 	play.pressed.connect(_on_play_pressed)
+	credits.pressed.connect(_on_credits_pressed)
 	exit.pressed.connect(_on_exit_pressed)
+<<<<<<< HEAD
 	intro.connect("tree_exited", init_menu)
+=======
+	
+>>>>>>> 91d96b645b3bc5eafc968e47c9783b53102407de
 
 func _on_play_pressed():
+	Global.play_confirm()
 	get_tree().change_scene_to_packed(demo)
 	
+
+func _on_credits_pressed():
+	Global.play_confirm()
+
 func _on_exit_pressed():
+	await Global.play_back()
 	get_tree().quit()
 	
 func init_menu():

@@ -1,12 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://pidk2fxu1tlg"]
+[gd_scene load_steps=8 format=3 uid="uid://pidk2fxu1tlg"]
 
+[ext_resource type="Script" path="res://scenes/levels/demo_gun.gd" id="1_3g65w"]
 [ext_resource type="Texture2D" uid="uid://2ef7x4imm3h2" path="res://assets/backgrounds/Space Background 1.png" id="1_dcnhk"]
 [ext_resource type="PackedScene" uid="uid://f8pli3qn73wm" path="res://scenes/terrain/tile_map_grotto_escape.tscn" id="1_vbb5l"]
 [ext_resource type="PackedScene" uid="uid://deh8jc38wesno" path="res://scenes/player/player.tscn" id="3_ip7jr"]
 [ext_resource type="PackedScene" uid="uid://dref8rwyw1vpf" path="res://scenes/ui/end_level_screen.tscn" id="4_ilsv0"]
 [ext_resource type="PackedScene" uid="uid://bfd03xtdnuqj3" path="res://scenes/enemy/skeleton.tscn" id="5_e7vx2"]
+[ext_resource type="AudioStream" uid="uid://dybiwvyhvoltw" path="res://assets/sounds/music/the_whole_other_loop.mp3" id="7_ofrmj"]
 
 [node name="DemoLevel" type="CanvasLayer"]
+script = ExtResource("1_3g65w")
 
 [node name="SpaceBackground" type="Sprite2D" parent="."]
 position = Vector2(256, 192)
@@ -24,3 +27,8 @@ position = Vector2(46, 122)
 
 [node name="Mob" parent="." instance=ExtResource("5_e7vx2")]
 position = Vector2(173, 242)
+
+[node name="WholeLoop" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_ofrmj")
+volume_db = -15.0
+pitch_scale = 0.8

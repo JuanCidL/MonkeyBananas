@@ -21,6 +21,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var explotion_is_spawned: bool = false
 @onready var explotion: Area2D
 
+@onready var jump_sound = $JumpSound
 
 
 
@@ -34,7 +35,10 @@ func _physics_process(delta):
 		velocity.y += gravity*delta
 	
 	if is_on_floor() and Input.is_action_just_pressed("jump"):
+		jump_sound.play()
 		velocity.y = jump_speed
+		
+		
 		
 	velocity.x = move_toward(velocity.x, speed * move_input, acceleration * delta)
 	

@@ -1,4 +1,9 @@
 extends Node
+@onready var confirm = $Confirm
+@onready var back = $Back
+@onready var shot = $Shot
+@onready var portal = $Portal
+
 
 ## Escena del menu para tenerla siempre cargada
 var main_menu = preload("res://scenes/ui/main_menu.tscn")
@@ -25,3 +30,17 @@ signal win_condition(value: bool)
 func set_win(value: bool):
 	win = value
 	emit_signal("win_condition", win)
+	
+func play_confirm():
+	confirm.play()
+
+func play_back():
+	back.play()
+	await back.finished
+	
+func play_shot():
+	shot.play()
+
+func play_portal():
+	portal.play()
+	
