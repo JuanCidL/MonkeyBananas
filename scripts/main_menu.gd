@@ -24,11 +24,8 @@ func _ready():
 	play.pressed.connect(_on_play_pressed)
 	credits.pressed.connect(_on_credits_pressed)
 	exit.pressed.connect(_on_exit_pressed)
-<<<<<<< HEAD
 	intro.connect("tree_exited", init_menu)
-=======
 	
->>>>>>> 91d96b645b3bc5eafc968e47c9783b53102407de
 
 func _on_play_pressed():
 	Global.play_confirm()

@@ -15,10 +15,6 @@ const SPEED = 3000.0
 func _ready():
 	collisionShape = $CollisionShape2D
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 	
 func _physics_process(delta):
 	velocity.x = SPEED * direction * delta

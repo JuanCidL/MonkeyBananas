@@ -21,8 +21,6 @@ func _ready():
 	## Se oculta la visibilidad ya que el menu de pausa aparece al llamarlo con "p"
 	hide()
 	
-	animation_tree.anim_player
-	
 	## Se les asigna nombre a los botones
 	resume.text = "Resume"
 	restart.text = "Restart"
