@@ -22,6 +22,12 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
+[node name="Tittle" type="Label" parent="SelectButtons"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Banana Time"
+label_settings = SubResource("LabelSettings_bc8vp")
+
 [node name="Play" type="Button" parent="SelectButtons"]
 layout_mode = 2
 text = "Play"
@@ -33,12 +39,6 @@ text = "Credits"
 [node name="Exit" type="Button" parent="SelectButtons"]
 layout_mode = 2
 text = "Exit"
-
-[node name="Tittle" type="Label" parent="."]
-layout_mode = 2
-size_flags_horizontal = 4
-text = "Banana Time"
-label_settings = SubResource("LabelSettings_bc8vp")
 
 [node name="Intro" parent="." instance=ExtResource("2_txffd")]
 visible = false

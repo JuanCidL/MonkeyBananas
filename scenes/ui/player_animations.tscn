@@ -1,8 +1,9 @@
-[gd_scene load_steps=26 format=3 uid="uid://lolqjvp6d7ra"]
+[gd_scene load_steps=12 format=3 uid="uid://lolqjvp6d7ra"]
 
 [ext_resource type="Texture2D" uid="uid://l5amyegcs864" path="res://assets/super_groto_scape/Characters/Player/spritesheets/player-idle.png" id="1_4twc3"]
 [ext_resource type="Texture2D" uid="uid://cle6gji1l4adi" path="res://assets/super_groto_scape/Characters/Player/spritesheets/player-jump.png" id="2_6u1jq"]
 [ext_resource type="Texture2D" uid="uid://oj8qb27lnamg" path="res://assets/super_groto_scape/Characters/Player/spritesheets/player-run.png" id="3_kfi00"]
+[ext_resource type="Texture2D" uid="uid://co0fi5ydopg1i" path="res://assets/super_groto_scape/Characters/Player/spritesheets/player-shoot.png" id="4_xjo6o"]
 
 [sub_resource type="Animation" id="Animation_tswjk"]
 length = 0.001
@@ -204,63 +205,66 @@ tracks/2/keys = {
 "values": [6]
 }
 
+[sub_resource type="Animation" id="Animation_7ojsa"]
+resource_name = "shoot"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot/Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pivot/Sprite2D:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_xjo6o")]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fc6w1"]
 _data = {
 "RESET": SubResource("Animation_tswjk"),
 "fall": SubResource("Animation_6g361"),
 "idle": SubResource("Animation_hfead"),
 "jump": SubResource("Animation_b0cdu"),
-"run": SubResource("Animation_2hpu7")
+"run": SubResource("Animation_2hpu7"),
+"shoot": SubResource("Animation_7ojsa")
 }
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_uksdm"]
-animation = &"fall"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4isbw"]
-animation = &"idle"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_c7a7d"]
-animation = &"jump"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_n4son"]
-animation = &"run"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kd05o"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5s5dp"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qui3a"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1ok3e"]
-reset = false
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1qkmi"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_x5etf"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3vrvb"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kg0nv"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hvgkf"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rvysm"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kptjm"]
-
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_nfp61"]
-states/End/position = Vector2(780, 100)
-states/fall/node = SubResource("AnimationNodeAnimation_uksdm")
-states/fall/position = Vector2(530, -18)
-states/idle/node = SubResource("AnimationNodeAnimation_4isbw")
-states/idle/position = Vector2(338, 100)
-states/jump/node = SubResource("AnimationNodeAnimation_c7a7d")
-states/jump/position = Vector2(317, -18)
-states/run/node = SubResource("AnimationNodeAnimation_n4son")
-states/run/position = Vector2(443, 193)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_kd05o"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_5s5dp"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_qui3a"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_1ok3e"), "run", "End", SubResource("AnimationNodeStateMachineTransition_1qkmi"), "jump", "fall", SubResource("AnimationNodeStateMachineTransition_x5etf"), "fall", "run", SubResource("AnimationNodeStateMachineTransition_3vrvb"), "run", "fall", SubResource("AnimationNodeStateMachineTransition_kg0nv"), "idle", "fall", SubResource("AnimationNodeStateMachineTransition_hvgkf"), "fall", "idle", SubResource("AnimationNodeStateMachineTransition_rvysm"), "run", "jump", SubResource("AnimationNodeStateMachineTransition_kptjm")]
-graph_offset = Vector2(-86, -25.0468)
 
 [node name="PlayerAnimations" type="Node2D"]
 
@@ -268,6 +272,7 @@ graph_offset = Vector2(-86, -25.0468)
 scale = Vector2(5, 5)
 
 [node name="BulletSpawn" type="Marker2D" parent="Pivot"]
+position = Vector2(13.6, -0.6)
 
 [node name="Sprite2D" type="Sprite2D" parent="Pivot"]
 position = Vector2(-1, -3)
@@ -279,8 +284,3 @@ metadata/_edit_lock_ = true
 libraries = {
 "": SubResource("AnimationLibrary_fc6w1")
 }
-
-[node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource("AnimationNodeStateMachine_nfp61")
-anim_player = NodePath("../AnimationPlayer")
-active = true

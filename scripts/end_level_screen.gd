@@ -1,8 +1,8 @@
 extends Control
 
 @onready var buttons = $Right/Buttons
-@onready var player_animations = $Left/Player/PlayerAnimations
-@onready var playback = player_animations.get_child(2).get("parameters/playback")
+@onready var animation_tree = $Left/Player/PlayerAnimations/AnimationTree
+@onready var playback = animation_tree.get("parameters/playback")
 
 ## Se crean los botones
 var restart = Button.new()
@@ -20,6 +20,8 @@ var nl_added = false
 func _ready():
 	## Se oculta la visibilidad ya que el menu de pausa aparece al llamarlo con "p"
 	hide()
+	
+	animation_tree.anim_player
 	
 	## Se les asigna nombre a los botones
 	resume.text = "Resume"

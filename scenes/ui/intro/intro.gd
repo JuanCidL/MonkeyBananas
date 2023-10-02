@@ -1,7 +1,6 @@
 extends Node2D
 
 @onready var player_animations = $PlayerAnimations
-@onready var playback: AnimationNodeStateMachinePlayback = player_animations.get_child(2).get("parameters/playback")
 @onready var pivot: Node2D = player_animations.get_child(0)
 @onready var bullet_scene = preload("res://scenes/player/bullet.tscn")
 @onready var screen_center: Vector2 = get_viewport_rect().size/2
@@ -13,20 +12,13 @@ extends Node2D
 func _ready():
 	area_2d.connect("area_entered", explode)
 	
-	var tween = create_tween().set_trans(Tween.TRANS_LINEAR)
-	playback.travel("run")
-	tween.tween_property(player_animations, "position", Vector2(360, player_animations.position.y), 3)
-	await tween.finished
-	playback.travel("idle")
-	pivot.scale.x *= -1
-	await get_tree().create_timer(1.0).timeout
-	#playback.travel("shot")
+func shoot():
 	bullet = bullet_scene.instantiate()
+	add_child(bullet)
 	var bullet_spawn_pos: Vector2 = pivot.get_child(0).global_position
 	
 	bullet.global_position = bullet_spawn_pos
 	bullet.rotation = bullet_spawn_pos.direction_to(screen_center).angle()
-	add_child(bullet)
 
 func explode(body: Area2D):
 	gpu_particles_2d.emitting = true
