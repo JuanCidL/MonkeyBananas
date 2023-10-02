@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://2ef7x4imm3h2" path="res://assets/backgrounds/Space Background 1.png" id="1_4m61n"]
 [ext_resource type="PackedScene" uid="uid://f8pli3qn73wm" path="res://scenes/terrain/tile_map_grotto_escape.tscn" id="2_mspep"]
 [ext_resource type="PackedScene" uid="uid://deh8jc38wesno" path="res://scenes/player/player.tscn" id="3_nbcqb"]
-[ext_resource type="PackedScene" path="res://scenes/Plataforma/plataforma.tscn" id="4_d1i1n"]
+[ext_resource type="PackedScene" uid="uid://cvakqgt6bhjq1" path="res://scenes/plataforma/plataforma.tscn" id="4_d1i1n"]
 
 [node name="Pseudo Tutorial" type="Node2D"]
 
