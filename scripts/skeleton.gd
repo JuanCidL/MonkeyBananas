@@ -8,16 +8,13 @@ const SPEED = 3000.0
 @onready var wall_ray = $Pivot/WallRay
 @onready var floor_ray = $Pivot/FloorRay
 @onready var animated_sprite_2d = $Pivot/AnimatedSprite2D
+@onready var prev_direction: float
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	collisionShape = $CollisionShape2D
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 	
 func _physics_process(delta):
 	velocity.x = SPEED * direction * delta
@@ -38,3 +35,12 @@ func _physics_process(delta):
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	queue_free() # Replace with function body.
+
+func time_stop():
+	prev_direction = direction
+	direction = 0
+	animated_sprite_2d.speed_scale = 0
+	
+func resume():
+	direction = prev_direction
+	animated_sprite_2d.speed_scale = 1

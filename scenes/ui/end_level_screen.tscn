@@ -1,7 +1,29 @@
-[gd_scene load_steps=3 format=3 uid="uid://dref8rwyw1vpf"]
+[gd_scene load_steps=10 format=3 uid="uid://dref8rwyw1vpf"]
 
 [ext_resource type="Script" path="res://scripts/end_level_screen.gd" id="1_urmpe"]
 [ext_resource type="PackedScene" uid="uid://lolqjvp6d7ra" path="res://scenes/ui/player_animations.tscn" id="2_ryojx"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_c2hrm"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6xouc"]
+animation = &"run"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_c02yn"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8kkxa"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8y2hq"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8yobh"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_cirm0"]
+states/idle/node = SubResource("AnimationNodeAnimation_c2hrm")
+states/idle/position = Vector2(415, 100)
+states/run/node = SubResource("AnimationNodeAnimation_6xouc")
+states/run/position = Vector2(633, 100)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_c02yn"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_8kkxa"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_8y2hq"), "run", "End", SubResource("AnimationNodeStateMachineTransition_8yobh")]
 
 [node name="EndLevelScreen" type="Control"]
 process_mode = 3
@@ -49,6 +71,11 @@ metadata/_edit_lock_ = true
 
 [node name="PlayerAnimations" parent="Left/Player" instance=ExtResource("2_ryojx")]
 
+[node name="AnimationTree" type="AnimationTree" parent="Left/Player/PlayerAnimations"]
+tree_root = SubResource("AnimationNodeStateMachine_cirm0")
+anim_player = NodePath("../AnimationPlayer")
+active = true
+
 [node name="Right" type="MarginContainer" parent="."]
 process_mode = 3
 layout_mode = 1
@@ -68,3 +95,5 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 metadata/_edit_lock_ = true
+
+[editable path="Left/Player/PlayerAnimations"]

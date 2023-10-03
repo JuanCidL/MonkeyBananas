@@ -1,8 +1,8 @@
 extends Control
 
 @onready var buttons = $Right/Buttons
-@onready var player_animations = $Left/Player/PlayerAnimations
-@onready var playback = player_animations.get_child(2).get("parameters/playback")
+@onready var animation_tree = $Left/Player/PlayerAnimations/AnimationTree
+@onready var playback = animation_tree.get("parameters/playback")
 
 ## Se crean los botones
 var restart = Button.new()
