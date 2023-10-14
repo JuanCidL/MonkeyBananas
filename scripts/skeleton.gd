@@ -8,6 +8,7 @@ const SPEED = 3000.0
 @onready var wall_ray = $Pivot/WallRay
 @onready var floor_ray = $Pivot/FloorRay
 @onready var animated_sprite_2d = $Pivot/AnimatedSprite2D
+const damage  = 1
 @onready var prev_direction: float
 
 
@@ -29,6 +30,13 @@ func _physics_process(delta):
 
 		
 	move_and_slide()
+	
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		if (collision.get_collider().name == 'Player'):
+			var player = collision.get_collider()
+			var normal = collision.get_normal()
+			player.hit(damage, normal)
 	animated_sprite_2d.play("walk")
 	
 	
