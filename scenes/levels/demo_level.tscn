@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://4gg7cww82dfq"]
+[gd_scene load_steps=6 format=3 uid="uid://4gg7cww82dfq"]
 
 [ext_resource type="PackedScene" uid="uid://f8pli3qn73wm" path="res://scenes/terrain/tile_map_grotto_escape.tscn" id="1_4stfx"]
 [ext_resource type="Texture2D" uid="uid://2ef7x4imm3h2" path="res://assets/backgrounds/Space Background 1.png" id="1_acr2v"]
 [ext_resource type="PackedScene" uid="uid://deh8jc38wesno" path="res://scenes/player/player.tscn" id="2_mebwp"]
-[ext_resource type="PackedScene" uid="uid://dref8rwyw1vpf" path="res://scenes/ui/end_level_screen.tscn" id="3_fqrs6"]
+[ext_resource type="PackedScene" path="res://scenes/ui/end_level_screen.tscn" id="3_fqrs6"]
+[ext_resource type="PackedScene" uid="uid://bfd03xtdnuqj3" path="res://scenes/enemy/skeleton.tscn" id="5_fkt4e"]
 
 [node name="DemoLevel" type="CanvasLayer"]
 
@@ -18,3 +19,6 @@ layer_0/tile_data = PackedInt32Array(1114132, 655361, 4, 1179668, 655361, 8, 117
 position = Vector2(259, 250)
 
 [node name="EndLevelScreen" parent="." instance=ExtResource("3_fqrs6")]
+
+[node name="Mob" parent="." instance=ExtResource("5_fkt4e")]
+position = Vector2(197, 248)
