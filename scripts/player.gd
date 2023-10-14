@@ -46,7 +46,7 @@ func _physics_process(delta):
 		var move_input = Input.get_axis("move_left", "move_right")
 	
 		if is_on_floor() and Input.is_action_just_pressed("jump"):
-      jump_sound.play()
+			jump_sound.play()
 			velocity.y = jump_speed
 			
 		velocity.x = move_toward(velocity.x, speed * move_input, acceleration * delta)
