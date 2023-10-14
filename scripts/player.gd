@@ -22,50 +22,66 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var explotion
 
 var health = 100
+@onready var input_enabled = true
 @onready var is_invulnerable = false
 @onready var vulnerability = $Vulnerability
-
+@onready var is_hit = false
+@onready var horizontal_knockback_speed = -200
+@onready var vertical_knockback_speed = -100
+@onready var input = $Input
 
 func _ready():
 	animation_tree.set("active", true)
 
 func _physics_process(delta):
-	var move_input = Input.get_axis("move_left", "move_right")
 	
+	# GRAV
 	if not is_on_floor():
 		velocity.y += gravity*delta
-	
-	if is_on_floor() and Input.is_action_just_pressed("jump"):
-		velocity.y = jump_speed
 		
-	velocity.x = move_toward(velocity.x, speed * move_input, acceleration * delta)
+	# INPUTS
+	if input_enabled:
+		var move_input = Input.get_axis("move_left", "move_right")
 	
+		if is_on_floor() and Input.is_action_just_pressed("jump"):
+			velocity.y = jump_speed
+			
+		velocity.x = move_toward(velocity.x, speed * move_input, acceleration * delta)
+
+			
+		if Input.is_action_just_pressed("bullet") and not bullet_is_spawned:
+			playback.travel("shoot")
+			return
+		
+		if Input.is_action_just_pressed("time_stop"):
+			tstop()
+		
+		# ANIMATIONS
+		if velocity.x != 0 and move_input:
+			pivot.scale.x = move_input
+	
+	
+		if is_on_floor():
+			if abs(velocity.x) > 5 or move_input:
+				playback.travel("run")
+			else:
+				playback.travel("idle")
+		
+		else:
+			if velocity.y < 0:
+				playback.travel("jump")
+			else:
+				playback.travel("fall")
+		
 	move_and_slide()
 	
-	if Input.is_action_just_pressed("bullet") and not bullet_is_spawned:
-		playback.travel("shoot")
-		#fire()
-		return
 	
-	if Input.is_action_just_pressed("time_stop"):
-		tstop()
+	
+	
 	
 	# animation
 	
-	if velocity.x != 0 and move_input:
-		pivot.scale.x = move_input
 	
-	
-	if is_on_floor():
-		if abs(velocity.x) > 5 or move_input:
-			playback.travel("run")
-		else:
-			playback.travel("idle")
-	else:
-		if velocity.y < 0:
-			playback.travel("jump")
-		else:
-			playback.travel("fall")
 			
 func fire():
 	if not bullet_is_spawned:
@@ -96,23 +112,48 @@ func get_health():
 func set_health(n):
 	health = n
 
-func receive_damage( damage ):
-	if is_invulnerable:
-		return
+func do_knockback( normal ):
+	velocity.y = vertical_knockback_speed
+	velocity.x = normal[0] * horizontal_knockback_speed
+	# tween interpolar desde horizontal hasta 0
+	var tween = create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
+	tween.tween_property(self, "velocity:x", 0.0, 0.4)
+	
+func start_invulnerable():
 	vulnerability.start()
 	is_invulnerable = true
-	var new_health = get_health() - damage
-	set_health(new_health)
+
+func hit(damage, normal):
+	if is_invulnerable:
+		return
+	receive_damage(damage)
+	do_knockback(normal)
 	
+
+func check_alive():
 	if (health == 0 or health < 0):
 		health = 0
 		print('Died')
+		
+		
+func block_input():
+	input.start()
+	input_enabled = false
+	
+func receive_damage( damage):
+	start_invulnerable()
+	block_input()
+	playback.travel("damage")
+	var new_health = get_health() - damage
+	set_health(new_health)
 	print('Ouch! ',  damage, ' Cur: ', health)
-  
+	check_alive()
+
 func _on_vulnerability_timeout():
 	is_invulnerable = false
 
-
+func _on_input_timeout():
+	input_enabled = true
 
 """"
 func _physics_process(delta):
@@ -134,3 +175,6 @@ func _physics_process(delta):
 
 	move_and_slide()
 """
+
+
+

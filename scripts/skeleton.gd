@@ -38,7 +38,8 @@ func _physics_process(delta):
 		var collision = get_slide_collision(i)
 		if (collision.get_collider().name == 'Player'):
 			var player = collision.get_collider()
-			player.receive_damage(damage)
+			var normal = collision.get_normal()
+			player.hit(damage, normal)
 	animated_sprite_2d.play("walk")
 	
 	

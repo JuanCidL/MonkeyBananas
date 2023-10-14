@@ -419,5 +419,10 @@ anim_player = NodePath("../AnimationPlayer")
 active = true
 
 [node name="Vulnerability" type="Timer" parent="."]
+wait_time = 1.5
+
+[node name="Input" type="Timer" parent="."]
+wait_time = 0.5
 
 [connection signal="timeout" from="Vulnerability" to="." method="_on_vulnerability_timeout"]
+[connection signal="timeout" from="Input" to="." method="_on_input_timeout"]
