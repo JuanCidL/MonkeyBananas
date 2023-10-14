@@ -19,7 +19,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var bullet
 
 @onready var explotion_is_spawned: bool = false
-@onready var explotion
+@onready var explotion: Area2D
 
 var health = 100
 @onready var input_enabled = true
@@ -29,6 +29,8 @@ var health = 100
 @onready var horizontal_knockback_speed = -200
 @onready var vertical_knockback_speed = -100
 @onready var input = $Input
+
+@onready var jump_sound = $JumpSound
 
 func _ready():
 	animation_tree.set("active", true)
@@ -44,6 +46,7 @@ func _physics_process(delta):
 		var move_input = Input.get_axis("move_left", "move_right")
 	
 		if is_on_floor() and Input.is_action_just_pressed("jump"):
+      jump_sound.play()
 			velocity.y = jump_speed
 			
 		velocity.x = move_toward(velocity.x, speed * move_input, acceleration * delta)
@@ -59,7 +62,6 @@ func _physics_process(delta):
 		# ANIMATIONS
 		if velocity.x != 0 and move_input:
 			pivot.scale.x = move_input
-	
 	
 		if is_on_floor():
 			if abs(velocity.x) > 5 or move_input:
@@ -86,8 +88,9 @@ func _physics_process(delta):
 func fire():
 	if not bullet_is_spawned:
 		if explotion_is_spawned:
-			explotion.queue_free()
+			explotion.destroy()
 			explotion_is_spawned = false
+			
 		bullet = bullet_scene.instantiate()
 		get_parent().add_child(bullet)
 		bullet.global_position = bullet_spawn.global_position

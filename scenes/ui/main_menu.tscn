@@ -1,6 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://dl8bgs3qdcvkg"]
+[gd_scene load_steps=4 format=3 uid="uid://dl8bgs3qdcvkg"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_xrf5t"]
+[ext_resource type="PackedScene" uid="uid://0uaurdmc3uf3" path="res://scenes/ui/intro/intro.tscn" id="2_txffd"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_bc8vp"]
+font_size = 30
+font_color = Color(0.141176, 0.294118, 1, 1)
+outline_size = 5
+outline_color = Color(0.6, 0.964706, 1, 1)
 
 [node name="MainMenu" type="MarginContainer"]
 anchors_preset = 15
@@ -15,6 +22,12 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
+[node name="Tittle" type="Label" parent="SelectButtons"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Banana Time"
+label_settings = SubResource("LabelSettings_bc8vp")
+
 [node name="Play" type="Button" parent="SelectButtons"]
 layout_mode = 2
 text = "Play"
@@ -26,3 +39,6 @@ text = "Credits"
 [node name="Exit" type="Button" parent="SelectButtons"]
 layout_mode = 2
 text = "Exit"
+
+[node name="Intro" parent="." instance=ExtResource("2_txffd")]
+visible = false

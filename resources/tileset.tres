@@ -1,10 +1,18 @@
-[gd_resource type="TileSet" load_steps=6 format=3 uid="uid://m15e2oggq7pe"]
+[gd_resource type="TileSet" load_steps=9 format=3 uid="uid://m15e2oggq7pe"]
 
 [ext_resource type="Texture2D" uid="uid://bv0fx8nkfysqs" path="res://assets/super_groto_scape/Environment/Layers/tileset.png" id="1_7lt8y"]
+[ext_resource type="PackedScene" uid="uid://cvakqgt6bhjq1" path="res://scenes/plataforma/plataforma.tscn" id="1_imoao"]
 [ext_resource type="Texture2D" uid="uid://dhdt3ql4rld80" path="res://assets/super_groto_scape/Environment/Layers/tileset-2.png" id="2_hyr0c"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_mrfff"]
 tile_data = PackedInt32Array(0, 524289, 4, 65536, 524289, 5, 131072, 524289, 6, 196608, 524289, 7, 262144, 524289, 8, 327680, 524289, 9, 1, 589825, 4, 65537, 589825, 5, 131073, 589825, 6, 196609, 589825, 7, 262145, 589825, 8, 327681, 589825, 9, 2, 655361, 4, 65538, 655361, 5, 131074, 655361, 6, 196610, 655361, 7, 262146, 655361, 8, 327682, 655361, 9)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_e085m"]
+tile_data = PackedInt32Array(0, 0, 65536, 1, 0, 65536)
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_1mym0"]
+resource_name = "Platform"
+scenes/1/scene = ExtResource("1_imoao")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ankih"]
 texture = ExtResource("1_7lt8y")
@@ -632,4 +640,6 @@ terrain_set_0/terrain_4/name = "Piso"
 terrain_set_0/terrain_4/color = Color(0.168627, 0.341176, 1, 1)
 sources/1 = SubResource("TileSetAtlasSource_ankih")
 sources/2 = SubResource("TileSetAtlasSource_8gd01")
+sources/0 = SubResource("TileSetScenesCollectionSource_1mym0")
 pattern_0 = SubResource("TileMapPattern_mrfff")
+pattern_1 = SubResource("TileMapPattern_e085m")

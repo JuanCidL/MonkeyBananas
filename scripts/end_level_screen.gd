@@ -1,8 +1,8 @@
 extends Control
 
 @onready var buttons = $Right/Buttons
-@onready var player_animations = $Left/Player/PlayerAnimations
-@onready var playback = player_animations.get_child(2).get("parameters/playback")
+@onready var animation_tree = $Left/Player/PlayerAnimations/AnimationTree
+@onready var playback = animation_tree.get("parameters/playback")
 
 ## Se crean los botones
 var restart = Button.new()
@@ -53,18 +53,22 @@ func _pause():
 
 ######## Funciones de callback ########
 func _on_resume_pressed():
+	Global.play_confirm()
 	_pause()
 	
 func _on_restart_pressed():
+	Global.play_back()
 	get_tree().reload_current_scene()
 	_pause()
 	
 func _on_next_level_pressed():
 	if n_lvl:
+		Global.play_confirm()
 		get_tree().change_scene_to_packed(n_lvl)
 		_pause()
 
 func _on_main_menu_pressed():
+	Global.play_back()
 	get_tree().change_scene_to_packed(Global.main_menu)
 	_pause()
 

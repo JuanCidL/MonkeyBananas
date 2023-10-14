@@ -1,0 +1,158 @@
+[gd_scene load_steps=15 format=3 uid="uid://0uaurdmc3uf3"]
+
+[ext_resource type="Script" path="res://scenes/ui/intro/intro.gd" id="1_7m5hy"]
+[ext_resource type="PackedScene" uid="uid://lolqjvp6d7ra" path="res://scenes/ui/player_animations.tscn" id="2_tbchr"]
+[ext_resource type="Shader" path="res://scenes/ui/intro/intro.gdshader" id="3_ag40c"]
+[ext_resource type="Shader" path="res://scenes/ui/intro/explotion.gdshader" id="4_t3b3g"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rbu1f"]
+radius = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pje4n"]
+shader = ExtResource("3_ag40c")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_kqbrp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j322j"]
+shader = ExtResource("4_t3b3g")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_nodtl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sw7go"]
+shader = ExtResource("4_t3b3g")
+
+[sub_resource type="Animation" id="Animation_sjty5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerAnimations:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-18, 287)]
+}
+
+[sub_resource type="Animation" id="Animation_r2rgi"]
+resource_name = "player_walk"
+length = 4.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerAnimations:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-18, 287), Vector2(360, 287)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(4.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"shoot"
+}]
+}
+tracks/2/type = "animation"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerAnimations/AnimationPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": PackedStringArray("run", "idle", "shoot", "idle"),
+"times": PackedFloat32Array(0, 3, 4, 4.3)
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PlayerAnimations/Pivot:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 3.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(1, 1), Vector2(-1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iwtrp"]
+_data = {
+"RESET": SubResource("Animation_sjty5"),
+"player_walk": SubResource("Animation_r2rgi")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vcjv0"]
+animation = &"player_walk"
+
+[node name="Intro" type="Node2D"]
+script = ExtResource("1_7m5hy")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(256, 192)
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_rbu1f")
+
+[node name="PlayerAnimations" parent="." instance=ExtResource("2_tbchr")]
+position = Vector2(-18, 287)
+
+[node name="Pivot" parent="PlayerAnimations" index="0"]
+scale = Vector2(-1, 1)
+
+[node name="Shader" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_pje4n")
+position = Vector2(0, -64)
+scale = Vector2(512, 512)
+texture = SubResource("CanvasTexture_kqbrp")
+centered = false
+
+[node name="Explotion" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_j322j")
+position = Vector2(256, 192)
+scale = Vector2(0.1, 0.1)
+texture = SubResource("CanvasTexture_nodtl")
+
+[node name="GPUParticles2D" type="CPUParticles2D" parent="."]
+material = SubResource("ShaderMaterial_sw7go")
+position = Vector2(256, 192)
+emitting = false
+amount = 200
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+lifetime_randomness = 0.5
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 80.0
+initial_velocity_max = 800.0
+orbit_velocity_max = 1.0
+radial_accel_min = 1.0
+radial_accel_max = 1.0
+scale_amount_min = 15.0
+scale_amount_max = 20.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_iwtrp")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeAnimation_vcjv0")
+anim_player = NodePath("../AnimationPlayer")
+active = true
+
+[editable path="PlayerAnimations"]
