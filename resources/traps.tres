@@ -1,0 +1,9 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://cn5btlk08qj7j"]
+
+[ext_resource type="PackedScene" uid="uid://bnrscqqi8hgs0" path="res://scenes/terrain/traps/spike_ball_launcher.tscn" id="1_ylw1s"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_u8q2f"]
+scenes/2/scene = ExtResource("1_ylw1s")
+
+[resource]
+sources/0 = SubResource("TileSetScenesCollectionSource_u8q2f")

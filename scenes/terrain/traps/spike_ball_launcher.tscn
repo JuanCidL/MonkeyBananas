@@ -1,0 +1,55 @@
+[gd_scene load_steps=9 format=3 uid="uid://bnrscqqi8hgs0"]
+
+[ext_resource type="Script" path="res://scenes/terrain/traps/scripts/spike_ball_launcher.gd" id="1_3xjbr"]
+[ext_resource type="Texture2D" uid="uid://bdlsfpo4cp032" path="res://assets/traps/Wood.png" id="2_f5u7e"]
+[ext_resource type="PackedScene" uid="uid://dsgbos583pq8j" path="res://scenes/terrain/traps/spike_ball.tscn" id="2_pb066"]
+[ext_resource type="Texture2D" uid="uid://726m7ljdnl8k" path="res://assets/traps/SpikeBall.png" id="3_t6h3e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kcc23"]
+size = Vector2(10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ygb56"]
+atlas = ExtResource("3_t6h3e")
+region = Rect2(0, 0, 21, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t2xgc"]
+atlas = ExtResource("3_t6h3e")
+region = Rect2(21, 0, 21, 21)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i8wdk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ygb56")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t2xgc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="SpikeBallLauncher" type="RigidBody2D"]
+disable_mode = 1
+collision_mask = 5
+freeze = true
+script = ExtResource("1_3xjbr")
+spike_scene = ExtResource("2_pb066")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_kcc23")
+
+[node name="Pivot" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Pivot"]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_f5u7e")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Pivot"]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_i8wdk")
+frame_progress = 0.053853
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(0, 11)

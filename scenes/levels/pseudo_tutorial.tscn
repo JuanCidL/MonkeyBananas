@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://ccy4ya5a8h5i2"]
+[gd_scene load_steps=6 format=3 uid="uid://ccy4ya5a8h5i2"]
 
 [ext_resource type="Texture2D" uid="uid://2ef7x4imm3h2" path="res://assets/backgrounds/Space Background 1.png" id="1_4m61n"]
 [ext_resource type="PackedScene" uid="uid://f8pli3qn73wm" path="res://scenes/terrain/tile_map_grotto_escape.tscn" id="2_mspep"]
 [ext_resource type="PackedScene" uid="uid://deh8jc38wesno" path="res://scenes/player/player.tscn" id="3_nbcqb"]
 [ext_resource type="PackedScene" uid="uid://cvakqgt6bhjq1" path="res://scenes/plataforma/plataforma.tscn" id="4_d1i1n"]
+[ext_resource type="Script" path="res://scenes/plataforma/platform_group.gd" id="4_q58aj"]
 
 [node name="Pseudo Tutorial" type="Node2D"]
 
@@ -19,12 +20,25 @@ layer_1/tile_data = PackedInt32Array(393236, 655361, 2)
 [node name="Player" parent="." instance=ExtResource("3_nbcqb")]
 position = Vector2(46, 122)
 
-[node name="Plataforma" parent="." instance=ExtResource("4_d1i1n")]
+[node name="Node2D" type="Node2D" parent="."]
+script = ExtResource("4_q58aj")
+
+[node name="Plataforma" parent="Node2D" instance=ExtResource("4_d1i1n")]
 position = Vector2(106, 170)
 movement = Vector2(300, 0)
 timing = 3.0
 
-[node name="Plataforma2" parent="." instance=ExtResource("4_d1i1n")]
+[node name="Plataforma2" parent="Node2D" instance=ExtResource("4_d1i1n")]
 position = Vector2(121, 170)
+movement = Vector2(300, 0)
+timing = 3.0
+
+[node name="Plataforma3" parent="Node2D" instance=ExtResource("4_d1i1n")]
+position = Vector2(89, 170)
+movement = Vector2(300, 0)
+timing = 3.0
+
+[node name="Plataforma4" parent="Node2D" instance=ExtResource("4_d1i1n")]
+position = Vector2(137, 170)
 movement = Vector2(300, 0)
 timing = 3.0

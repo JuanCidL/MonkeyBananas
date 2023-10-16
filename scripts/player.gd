@@ -18,7 +18,6 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var bullet_is_spawned : bool = false
 @onready var bullet
 
-@onready var explotion_is_spawned: bool = false
 @onready var explotion: Area2D
 
 var health = 100
@@ -78,8 +77,13 @@ func _physics_process(delta):
 	move_and_slide()
 	
 	
-	
-	
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		var body = collision.get_collider()
+		print(body.name)
+		if (body.has_method("time_stop")):
+			var normal = -collision.get_normal()
+			hit(1, normal)
 	
 	# animation
 	
@@ -87,9 +91,9 @@ func _physics_process(delta):
 			
 func fire():
 	if not bullet_is_spawned:
-		if explotion_is_spawned:
+		if explotion != null:
 			explotion.destroy()
-			explotion_is_spawned = false
+
 			
 		bullet = bullet_scene.instantiate()
 		get_parent().add_child(bullet)
@@ -102,7 +106,6 @@ func fire():
 func tstop():
 	if bullet_is_spawned:
 		explotion = bullet.tstop()
-		explotion_is_spawned = true
 
 ## Llama al setter de win
 func on_win_condition():

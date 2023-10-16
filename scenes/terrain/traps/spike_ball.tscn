@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://dsgbos583pq8j"]
+
+[ext_resource type="Script" path="res://scenes/terrain/traps/scripts/spike_ball.gd" id="1_f1kbr"]
+[ext_resource type="Texture2D" uid="uid://726m7ljdnl8k" path="res://assets/traps/SpikeBall.png" id="2_xmwsx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x3oml"]
+radius = 8.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ygb56"]
+atlas = ExtResource("2_xmwsx")
+region = Rect2(0, 0, 21, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t2xgc"]
+atlas = ExtResource("2_xmwsx")
+region = Rect2(21, 0, 21, 21)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6jd38"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ygb56")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t2xgc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="SpikeBall" type="RigidBody2D"]
+collision_layer = 8
+collision_mask = 7
+script = ExtResource("1_f1kbr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_x3oml")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6jd38")
+frame_progress = 0.490869

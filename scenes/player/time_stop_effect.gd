@@ -5,6 +5,7 @@ extends Area2D
 @onready var tween = create_tween()#.set_parallel(true)
 @onready var final_scale = Vector2(80, 80)
 @onready var dt = 1.0
+@onready var myself = self
 
 func _ready():
 	gpu_particles_2d.set("emitting", true)
@@ -15,7 +16,9 @@ func _ready():
 	connect("body_entered", _on_body_entered)
 	for body in get_overlapping_bodies():
 		stop(body)
-	
+	await get_tree().create_timer(3).timeout
+	if myself != null:
+		destroy()
 
 func _process(_delta):
 	if Input.is_action_just_pressed("pause"):
@@ -24,16 +27,23 @@ func _process(_delta):
 func _on_body_entered(stopeable: Node2D):
 	print(stopeable.name)
 	stop(stopeable)
+	
 
 func stop(body: Node2D):
 	if body.has_method("time_stop"):
-		body.time_stop()
+		body.call_deferred("time_stop")
+		Global.stop_group.emit(body)
+	
+		
+func resume(body: Node2D):
+	if body.has_method("resume"):
+		body.resume()
 
 func destroy():
 	var bodies = get_overlapping_bodies()
 	monitoring = false
 	monitorable = false
 	for body in bodies:
-		if body.has_method("resume"):
-			body.resume()
+		resume(body)
+	Global.unstop_group.emit()
 	queue_free()
