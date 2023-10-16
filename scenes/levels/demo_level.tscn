@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/levels/demo_level.gd" id="1_3wh6q"]
 [ext_resource type="PackedScene" uid="uid://f8pli3qn73wm" path="res://scenes/terrain/tile_map_grotto_escape.tscn" id="1_4stfx"]
 [ext_resource type="Texture2D" uid="uid://2ef7x4imm3h2" path="res://assets/backgrounds/Space Background 1.png" id="1_acr2v"]
-[ext_resource type="PackedScene" uid="uid://deh8jc38wesno" path="res://scenes/player.tscn" id="2_mebwp"]
+[ext_resource type="PackedScene" uid="uid://deh8jc38wesno" path="res://scenes/player/player.tscn" id="2_mebwp"]
 [ext_resource type="PackedScene" uid="uid://dref8rwyw1vpf" path="res://scenes/ui/end_level_screen.tscn" id="3_fqrs6"]
 [ext_resource type="PackedScene" uid="uid://bfd03xtdnuqj3" path="res://scenes/enemy/skeleton.tscn" id="5_fkt4e"]
 [ext_resource type="AudioStream" uid="uid://2f6yfihxxu2e" path="res://assets/sounds/music/Density_Time_MAZE_loop.mp3" id="6_s3h3p"]

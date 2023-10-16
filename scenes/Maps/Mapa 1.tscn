@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cbr7rnvv4ru8n" path="res://assets/backgrounds/Space Background.png" id="1_m8d6b"]
 [ext_resource type="PackedScene" uid="uid://f8pli3qn73wm" path="res://scenes/terrain/tile_map_grotto_escape.tscn" id="1_v3sh3"]
 [ext_resource type="PackedScene" uid="uid://cvakqgt6bhjq1" path="res://scenes/plataforma/plataforma.tscn" id="2_c3dyb"]
-[ext_resource type="PackedScene" uid="uid://deh8jc38wesno" path="res://scenes/player.tscn" id="2_pveq4"]
+[ext_resource type="PackedScene" uid="uid://deh8jc38wesno" path="res://scenes/player/player.tscn" id="2_pveq4"]
 [ext_resource type="PackedScene" uid="uid://bfd03xtdnuqj3" path="res://scenes/enemy/skeleton.tscn" id="5_ll7ss"]
 
 [node name="Main 1" type="Node2D"]
@@ -23,18 +23,20 @@ position = Vector2(765, 1164.25)
 scale = Vector2(3.0625, 2.30599)
 texture = ExtResource("1_m8d6b")
 
-[node name="Plataforma" parent="." instance=ExtResource("2_c3dyb")]
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Plataforma" parent="Node2D" instance=ExtResource("2_c3dyb")]
 position = Vector2(1104, 288)
 movement = Vector2(300, 0)
 timing = 3.0
 
-[node name="Plataforma3" parent="." instance=ExtResource("2_c3dyb")]
-position = Vector2(1134, 288)
+[node name="Plataforma2" parent="Node2D" instance=ExtResource("2_c3dyb")]
+position = Vector2(1119, 288)
 movement = Vector2(300, 0)
 timing = 3.0
 
-[node name="Plataforma2" parent="." instance=ExtResource("2_c3dyb")]
-position = Vector2(1119, 288)
+[node name="Plataforma3" parent="Node2D" instance=ExtResource("2_c3dyb")]
+position = Vector2(1134, 288)
 movement = Vector2(300, 0)
 timing = 3.0
 
@@ -56,4 +58,4 @@ position = Vector2(780, 255)
 position = Vector2(385, 328)
 
 [node name="Mob3" parent="." instance=ExtResource("5_ll7ss")]
-position = Vector2(1119, 262)
+position = Vector2(488, 184)
