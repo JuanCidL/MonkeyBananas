@@ -7,6 +7,7 @@ extends Node
 
 ## Escena del menu para tenerla siempre cargada
 var main_menu = preload("res://scenes/ui/main_menu.tscn")
+var show_intro: bool = false
 
 ## Estado de vida del personaje
 var is_alive: bool = true
@@ -30,6 +31,11 @@ signal win_condition(value: bool)
 func set_win(value: bool):
 	win = value
 	emit_signal("win_condition", win)
+	
+## Signal timestop group
+signal stop_group(group: Node2D)
+signal unstop_group
+
 	
 func play_confirm():
 	confirm.play()

@@ -4,9 +4,10 @@ extends MarginContainer
 @onready var play = $SelectButtons/Play
 @onready var credits = $SelectButtons/Credits
 @onready var exit = $SelectButtons/Exit
-@onready var intro = $Intro
 @onready var buttons: Array = Array()
 @onready var tittle = $SelectButtons/Tittle
+const intro_scene = preload("res://scenes/ui/intro/intro.tscn") 
+@onready var intro: Node2D
 
 const demo = preload("res://scenes/levels/win_demo.tscn")
 
@@ -19,12 +20,18 @@ func _ready():
 		button.hide()
 		button.modulate.a = 0
 	
-	intro.show()
-
 	play.pressed.connect(_on_play_pressed)
 	credits.pressed.connect(_on_credits_pressed)
 	exit.pressed.connect(_on_exit_pressed)
-	intro.connect("tree_exited", init_menu)
+	
+	if not Global.show_intro:
+		intro = intro_scene.instantiate()
+		add_child(intro)
+		intro.connect("tree_exited", init_menu)
+		Global.show_intro = true
+	else:
+		init_menu()
+
 	
 
 func _on_play_pressed():

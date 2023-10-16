@@ -7,6 +7,7 @@
 size = Vector2(16, 20)
 
 [node name="Plataforma" type="AnimatableBody2D"]
+collision_layer = 17
 script = ExtResource("1_mk4kx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

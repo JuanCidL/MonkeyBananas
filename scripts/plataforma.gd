@@ -15,7 +15,7 @@ func setup_tween():
 	tween.tween_property(self, "position", -movement, timing).as_relative()
 
 func time_stop():
-	tween.stop()
+	tween.pause()
 
 func resume():
-	setup_tween()
+	tween.play()
