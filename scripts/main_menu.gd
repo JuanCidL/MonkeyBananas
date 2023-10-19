@@ -9,7 +9,7 @@ extends MarginContainer
 const intro_scene = preload("res://scenes/ui/intro/intro.tscn") 
 @onready var intro: Node2D
 
-const demo = preload("res://scenes/levels/win_demo.tscn")
+const demo = preload("res://scenes/levels/maps/Mapa 1.tscn")
 
 func _ready():
 	buttons.append(play)
