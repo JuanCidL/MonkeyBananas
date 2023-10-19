@@ -3,6 +3,8 @@ extends Control
 @onready var buttons = $Right/Buttons
 @onready var animation_tree = $Left/Player/PlayerAnimations/AnimationTree
 @onready var playback = animation_tree.get("parameters/playback")
+@onready var sprite = $Left/Player/PlayerAnimations/Pivot/Sprite2D
+@onready var label = $Label
 
 ## Se crean los botones
 var restart = Button.new()
@@ -19,7 +21,9 @@ var nl_added = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	## Se oculta la visibilidad ya que el menu de pausa aparece al llamarlo con "p"
+	label.hide()
 	hide()
+	
 	
 	## Se les asigna nombre a los botones
 	resume.text = "Resume"
@@ -40,6 +44,7 @@ func _ready():
 	
 	## Se conecta la señal de condicion de victoria a un callback
 	Global.win_condition.connect(_on_win_condition)
+	Global.life_state_changed.connect(_on_die)
 
 func _process(_delta):
 	if Input.is_action_just_pressed("pause"):
@@ -85,3 +90,17 @@ func _on_win_condition(value: bool):
 		playback.travel("run")
 		## Se pausa el nivel
 		_pause()
+
+func _on_die(is_alive: bool):
+	if not is_alive:
+		buttons.remove_child(resume)
+		show()
+		playback.travel("damage")
+		label.show()
+		get_tree().paused = true
+		#var value = 0
+		#while true:
+		#	var dt = get_process_delta_time()
+		#	value = value + dt
+		#	sprite.modulate.r = sin(value)
+			

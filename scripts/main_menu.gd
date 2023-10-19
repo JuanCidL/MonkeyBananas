@@ -28,11 +28,13 @@ func _ready():
 		intro = intro_scene.instantiate()
 		add_child(intro)
 		intro.connect("tree_exited", init_menu)
-		Global.show_intro = true
 	else:
 		init_menu()
 
-	
+func _process(_delta):
+	if Input.is_action_just_pressed("skip_intro") and not Global.show_intro:
+		Global.show_intro = true
+		intro.queue_free()
 
 func _on_play_pressed():
 	Global.play_confirm()

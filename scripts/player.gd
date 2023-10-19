@@ -11,6 +11,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var animation_tree = $AnimationTree
 @onready var playback = animation_tree.get("parameters/playback")
 @onready var pivot = $Pivot
+@onready var hitbox = $Hitbox
 
 
 @onready var bullet_spawn: Marker2D = $Pivot/BulletSpawn
@@ -20,7 +21,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var explotion: Area2D
 
-var health = 100
+var health = 50
 @onready var input_enabled = true
 @onready var is_invulnerable = false
 @onready var vulnerability = $Vulnerability
@@ -33,6 +34,8 @@ var health = 100
 
 func _ready():
 	animation_tree.set("active", true)
+	hitbox.connect("body_entered", _on_body_enter)
+	Global.set_alive(true)
 
 func _physics_process(delta):
 	
@@ -77,13 +80,7 @@ func _physics_process(delta):
 	move_and_slide()
 	
 	
-	for i in get_slide_collision_count():
-		var collision = get_slide_collision(i)
-		var body = collision.get_collider()
-		print(body.name)
-		if (body.has_method("time_stop")):
-			var normal = -collision.get_normal()
-			hit(1, normal)
+	
 	
 	# animation
 	
@@ -139,8 +136,15 @@ func hit(damage, normal):
 func check_alive():
 	if (health == 0 or health < 0):
 		health = 0
-		print('Died')
+		await die()
+		Global.set_alive(false)
 		
+func die():
+	playback.travel("damage")
+	set_physics_process(false)
+	var tween = create_tween()
+	await tween.tween_property(sprite, "modulate:a", 0, 2).finished
+	return 0
 		
 func block_input():
 	input.start()
@@ -160,6 +164,13 @@ func _on_vulnerability_timeout():
 
 func _on_input_timeout():
 	input_enabled = true
+
+func _on_body_enter(node: Node2D):
+	if node.has_method("get_damage"):
+		var dmg = node.get_damage()
+		var node_pos = node.global_position
+		var normal = (node_pos - global_position).normalized()
+		hit(dmg, normal)
 
 """"
 func _physics_process(delta):

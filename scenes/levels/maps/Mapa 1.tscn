@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://j1y1g2wt05xg"]
+[gd_scene load_steps=15 format=3 uid="uid://j1y1g2wt05xg"]
 
 [ext_resource type="Script" path="res://scenes/levels/win_demo.gd" id="1_cfdnd"]
 [ext_resource type="Texture2D" uid="uid://cbr7rnvv4ru8n" path="res://assets/backgrounds/Space Background.png" id="1_vk0vt"]
@@ -13,9 +13,11 @@
 [ext_resource type="AudioStream" uid="uid://cl6htg8npdoum" path="res://assets/sounds/sfx/Retro Success Melody 01 - sawtooth lead 1.wav" id="10_2dfjd"]
 [ext_resource type="PackedScene" uid="uid://pidk2fxu1tlg" path="res://scenes/levels/demo_gun.tscn" id="11_vcp14"]
 [ext_resource type="AudioStream" uid="uid://2f6yfihxxu2e" path="res://assets/sounds/music/Density_Time_MAZE_loop.mp3" id="12_42la7"]
+[ext_resource type="PackedScene" uid="uid://csbhrrpjvdb1y" path="res://scenes/terrain/traps/die_area.tscn" id="14_4f5t8"]
 
 [node name="Main 1" type="Node2D"]
 script = ExtResource("1_cfdnd")
+metadata/_edit_vertical_guides_ = [-235.0]
 
 [node name="SpaceBackground" type="Sprite2D" parent="."]
 position = Vector2(350, 305)
@@ -57,6 +59,9 @@ position = Vector2(74, 325)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(-1, 4)
+limit_left = -60
+limit_right = 3000
+limit_bottom = 1400
 
 [node name="Mob" parent="." instance=ExtResource("5_k2825")]
 position = Vector2(2304, 1181)
@@ -98,3 +103,7 @@ stream = ExtResource("12_42la7")
 volume_db = -15.0
 pitch_scale = 0.8
 autoplay = true
+
+[node name="die_area" parent="." instance=ExtResource("14_4f5t8")]
+position = Vector2(523, 549)
+scale = Vector2(100, 4.32)

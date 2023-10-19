@@ -31,4 +31,5 @@ func explode(body: Area2D):
 	tween.tween_property(player_animations, "position", Vector2(600, player_animations.position.y+40), 1)
 	tween.tween_property(player_animations, "rotation", 30, 1)
 	await tween.finished
+	Global.show_intro = true
 	queue_free()
