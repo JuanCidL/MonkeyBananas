@@ -2,7 +2,7 @@ extends AnimatableBody2D
 
 
 @export var movement : Vector2
-@export_range(1, 5) var timing: float = 1.0
+@export_range(1, 6) var timing: float = 1.0
 
 @onready var tween: Tween
 

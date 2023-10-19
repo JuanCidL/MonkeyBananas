@@ -1,9 +1,10 @@
-[gd_resource type="TileSet" load_steps=11 format=3 uid="uid://m15e2oggq7pe"]
+[gd_resource type="TileSet" load_steps=13 format=3 uid="uid://m15e2oggq7pe"]
 
 [ext_resource type="Texture2D" uid="uid://bv0fx8nkfysqs" path="res://assets/super_groto_scape/Environment/Layers/tileset.png" id="1_7lt8y"]
 [ext_resource type="PackedScene" uid="uid://cvakqgt6bhjq1" path="res://scenes/plataforma/plataforma.tscn" id="1_imoao"]
 [ext_resource type="Texture2D" uid="uid://dhdt3ql4rld80" path="res://assets/super_groto_scape/Environment/Layers/tileset-2.png" id="2_hyr0c"]
 [ext_resource type="Texture2D" uid="uid://drwbdsm2clhqc" path="res://assets/super_groto_scape/Environment/Layers/tiledemo.png" id="4_lxlnq"]
+[ext_resource type="Texture2D" uid="uid://c0qx6vfmmxx6d" path="res://assets/super_groto_scape/Environment/Layers/props/plant.png" id="5_4a04a"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_mrfff"]
 tile_data = PackedInt32Array(0, 524289, 4, 65536, 524289, 5, 131072, 524289, 6, 196608, 524289, 7, 262144, 524289, 8, 327680, 524289, 9, 1, 589825, 4, 65537, 589825, 5, 131073, 589825, 6, 196609, 589825, 7, 262145, 589825, 8, 327681, 589825, 9, 2, 655361, 4, 65538, 655361, 5, 131074, 655361, 6, 196610, 655361, 7, 262146, 655361, 8, 327682, 655361, 9)
@@ -20,33 +21,43 @@ texture = ExtResource("1_7lt8y")
 2:12/0 = 0
 2:12/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:12/0/physics_layer_0/angular_velocity = 0.0
+2:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(-0.5625, 0.625, 8, -8, 8, 8, -8, 8)
 3:12/0 = 0
 3:12/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 3:12/0/physics_layer_0/angular_velocity = 0.0
+3:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 3:13/0 = 0
 3:13/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 3:13/0/physics_layer_0/angular_velocity = 0.0
+3:13/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 3:11/0 = 0
 3:11/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 3:11/0/physics_layer_0/angular_velocity = 0.0
+3:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-0.5625, 0.625, 8, -8, 8, 8, -8, 8)
 2:13/0 = 0
 2:13/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:13/0/physics_layer_0/angular_velocity = 0.0
+2:13/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 5:11/0 = 0
 5:11/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 5:11/0/physics_layer_0/angular_velocity = 0.0
+5:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -7.25, -0.625, 0.25, 6.8125, 8, -8, 8)
 5:12/0 = 0
 5:12/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 5:12/0/physics_layer_0/angular_velocity = 0.0
+5:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 5:13/0 = 0
 5:13/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 5:13/0/physics_layer_0/angular_velocity = 0.0
+5:13/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 6:13/0 = 0
 6:13/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 6:13/0/physics_layer_0/angular_velocity = 0.0
+6:13/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 6:12/0 = 0
 6:12/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 6:12/0/physics_layer_0/angular_velocity = 0.0
+6:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -7.25, -0.625, 0.25, 6.8125, 8, -8, 8)
 8:4/0 = 0
 8:4/0/terrain_set = 0
 8:4/0/terrain = 0
@@ -1012,7 +1023,7 @@ texture = ExtResource("4_lxlnq")
 42:9/0 = 0
 42:9/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 42:9/0/physics_layer_0/angular_velocity = 0.0
-42:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-0.5, 3.0625, 8, -6.875, 8, 8, -8, 8)
+42:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-0.25, 0.3125, 8, -8, 8, 8, -8, 8)
 43:9/0 = 0
 43:9/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 43:9/0/physics_layer_0/angular_velocity = 0.0
@@ -1140,7 +1151,7 @@ texture = ExtResource("4_lxlnq")
 41:10/0 = 0
 41:10/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 41:10/0/physics_layer_0/angular_velocity = 0.0
-41:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-0.5, 3.0625, 8, -6.875, 8, 8, -8, 8)
+41:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-0.25, 0.3125, 8, -8, 8, 8, -8, 8)
 42:10/0 = 0
 42:10/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 42:10/0/physics_layer_0/angular_velocity = 0.0
@@ -1271,7 +1282,7 @@ texture = ExtResource("4_lxlnq")
 40:11/0 = 0
 40:11/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 40:11/0/physics_layer_0/angular_velocity = 0.0
-40:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-0.5, 3.0625, 8, -6.875, 8, 8, -8, 8)
+40:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-0.25, 0.3125, 8, -8, 8, 8, -8, 8)
 41:11/0 = 0
 41:11/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 41:11/0/physics_layer_0/angular_velocity = 0.0
@@ -1419,7 +1430,7 @@ texture = ExtResource("4_lxlnq")
 39:12/0 = 0
 39:12/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 39:12/0/physics_layer_0/angular_velocity = 0.0
-39:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(-0.5, 3.0625, 8, -6.875, 8, 8, -8, 8)
+39:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(-0.25, 0.3125, 8, -8, 8, 8, -8, 8)
 40:12/0 = 0
 40:12/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 40:12/0/physics_layer_0/angular_velocity = 0.0
@@ -1957,6 +1968,9 @@ texture = ExtResource("4_lxlnq")
 64:14/0/physics_layer_0/angular_velocity = 0.0
 64:14/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_04i6b"]
+texture = ExtResource("5_4a04a")
+
 [resource]
 physics_layer_0/collision_layer = 1
 terrain_set_0/mode = 2
@@ -1974,5 +1988,6 @@ sources/1 = SubResource("TileSetAtlasSource_ankih")
 sources/2 = SubResource("TileSetAtlasSource_8gd01")
 sources/0 = SubResource("TileSetScenesCollectionSource_1mym0")
 sources/3 = SubResource("TileSetAtlasSource_3qnbb")
+sources/5 = SubResource("TileSetAtlasSource_04i6b")
 pattern_0 = SubResource("TileMapPattern_mrfff")
 pattern_1 = SubResource("TileMapPattern_e085m")

@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+#
 @onready var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var direction = 1
 const SPEED = 3000.0
@@ -42,7 +42,8 @@ func _physics_process(delta):
 	
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
-	queue_free() # Replace with function body.
+	#queue_free() # Replace with function body.
+	pass
 
 func time_stop():
 	prev_direction = direction

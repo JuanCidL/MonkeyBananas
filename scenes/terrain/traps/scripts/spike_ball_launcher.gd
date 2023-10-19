@@ -5,7 +5,7 @@ extends RigidBody2D
 @onready var spike
 @onready var marker_2d = $Marker2D
 @onready var limit = 0
-@export var cd = 2
+@export var cd = 1
 
 func _process(delta):
 	limit = limit + delta
