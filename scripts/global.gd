@@ -19,6 +19,8 @@ signal life_state_changed(new_state: bool)
 func set_alive(new_state: bool):
 	is_alive = new_state
 	emit_signal("life_state_changed", new_state)
+	
+signal lifebar(health: int)
 
 
 #### Variable que representa si el jugador paso el nivel ###

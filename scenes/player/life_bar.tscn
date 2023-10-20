@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://b85a7ih2hvuwx"]
+
+[ext_resource type="Script" path="res://scenes/player/life_bar.gd" id="1_5x8a3"]
+[ext_resource type="Texture2D" uid="uid://7x3l6wqvp2yr" path="res://assets/lifebar/empty.png" id="2_0hbho"]
+[ext_resource type="Texture2D" uid="uid://bsl781cr4tp3o" path="res://assets/lifebar/full.png" id="3_lw4rx"]
+
+[node name="Container" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5x8a3")
+
+[node name="LifeBar" type="TextureProgressBar" parent="."]
+layout_mode = 2
+max_value = 50.0
+value = 50.0
+texture_under = ExtResource("2_0hbho")
+texture_progress = ExtResource("3_lw4rx")

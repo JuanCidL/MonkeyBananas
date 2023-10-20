@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://j1y1g2wt05xg"]
+[gd_scene load_steps=16 format=3 uid="uid://j1y1g2wt05xg"]
 
 [ext_resource type="Script" path="res://scenes/levels/win_demo.gd" id="1_cfdnd"]
 [ext_resource type="Texture2D" uid="uid://cbr7rnvv4ru8n" path="res://assets/backgrounds/Space Background.png" id="1_vk0vt"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://deh8jc38wesno" path="res://scenes/player/player.tscn" id="4_k3tv4"]
 [ext_resource type="PackedScene" uid="uid://bfd03xtdnuqj3" path="res://scenes/enemy/skeleton.tscn" id="5_k2825"]
 [ext_resource type="PackedScene" uid="uid://dref8rwyw1vpf" path="res://scenes/ui/end_level_screen.tscn" id="7_kyuxm"]
+[ext_resource type="PackedScene" uid="uid://b85a7ih2hvuwx" path="res://scenes/player/life_bar.tscn" id="8_fcm5q"]
 [ext_resource type="PackedScene" uid="uid://dkisjxciy6xkn" path="res://scenes/terrain/traps/tile_traps.tscn" id="8_ujbx1"]
 [ext_resource type="PackedScene" uid="uid://0oshvretw2uy" path="res://scenes/terrain/win_condition.tscn" id="9_nn6a3"]
 [ext_resource type="AudioStream" uid="uid://cl6htg8npdoum" path="res://assets/sounds/sfx/Retro Success Melody 01 - sawtooth lead 1.wav" id="10_2dfjd"]
@@ -82,6 +83,8 @@ position = Vector2(385, 328)
 position = Vector2(488, 184)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Container" parent="CanvasLayer" instance=ExtResource("8_fcm5q")]
 
 [node name="EndLevelScreen" parent="CanvasLayer" instance=ExtResource("7_kyuxm")]
 n_lvl = ExtResource("11_vcp14")

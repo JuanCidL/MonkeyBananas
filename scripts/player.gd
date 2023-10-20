@@ -12,6 +12,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var playback = animation_tree.get("parameters/playback")
 @onready var pivot = $Pivot
 @onready var hitbox = $Hitbox
+@onready var cpu_particles_2d = $Pivot/CPUParticles2D
 
 
 @onready var bullet_spawn: Marker2D = $Pivot/BulletSpawn
@@ -134,6 +135,7 @@ func hit(damage, normal):
 	
 
 func check_alive():
+	Global.lifebar.emit(health)
 	if (health == 0 or health < 0):
 		health = 0
 		await die()
@@ -143,6 +145,9 @@ func die():
 	playback.travel("damage")
 	set_physics_process(false)
 	var tween = create_tween()
+	tween.set_parallel(true)
+	tween.tween_property(pivot, "rotation", 10, 1)
+	cpu_particles_2d.emitting = true
 	await tween.tween_property(sprite, "modulate:a", 0, 2).finished
 	return 0
 		

@@ -22,7 +22,6 @@ layer_0/tile_data = PackedInt32Array(1114132, 655361, 4, 1179668, 655361, 8, 117
 position = Vector2(259, 250)
 
 [node name="EndLevelScreen" parent="." instance=ExtResource("3_fqrs6")]
-visible = true
 
 [node name="Mob" parent="." instance=ExtResource("5_fkt4e")]
 position = Vector2(197, 248)
