@@ -30,10 +30,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="SpikeBallLauncher" type="RigidBody2D"]
-disable_mode = 1
+[node name="SpikeBallLauncher" type="StaticBody2D"]
+collision_layer = 9
 collision_mask = 5
-freeze = true
 script = ExtResource("1_3xjbr")
 spike_scene = ExtResource("2_pb066")
 

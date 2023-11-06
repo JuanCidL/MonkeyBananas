@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+#
 @onready var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var direction = 1
 const SPEED = 3000.0
@@ -8,7 +8,7 @@ const SPEED = 3000.0
 @onready var wall_ray = $Pivot/WallRay
 @onready var floor_ray = $Pivot/FloorRay
 @onready var animated_sprite_2d = $Pivot/AnimatedSprite2D
-const damage  = 1
+const damage  = 20
 @onready var prev_direction: float
 
 
@@ -31,18 +31,16 @@ func _physics_process(delta):
 		
 	move_and_slide()
 	
-	for i in get_slide_collision_count():
-		var collision = get_slide_collision(i)
-		if (collision.get_collider().name == 'Player'):
-			var player = collision.get_collider()
-			var normal = collision.get_normal()
-			player.hit(damage, normal)
 	animated_sprite_2d.play("walk")
 	
 	
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
-	queue_free() # Replace with function body.
+	#queue_free() # Replace with function body.
+	pass
+
+func get_damage():
+	return damage
 
 func time_stop():
 	prev_direction = direction

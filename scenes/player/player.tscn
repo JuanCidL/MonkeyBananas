@@ -1,17 +1,46 @@
-[gd_scene load_steps=40 format=3 uid="uid://deh8jc38wesno"]
+[gd_scene load_steps=49 format=3 uid="uid://deh8jc38wesno"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_hs4xo"]
 [ext_resource type="Texture2D" uid="uid://l5amyegcs864" path="res://assets/super_groto_scape/Characters/Player/spritesheets/player-idle.png" id="2_iwq45"]
 [ext_resource type="PackedScene" uid="uid://chqwn1lfvwcxd" path="res://scenes/player/bullet.tscn" id="2_uplmb"]
 [ext_resource type="Texture2D" uid="uid://cle6gji1l4adi" path="res://assets/super_groto_scape/Characters/Player/spritesheets/player-jump.png" id="3_8s5rb"]
+[ext_resource type="Texture2D" uid="uid://5h85yx4aotug" path="res://assets/super_groto_scape/Fx/Sprites/Pick Feedback 2/pick-feedback-3.png" id="4_34ptn"]
+[ext_resource type="Texture2D" uid="uid://d34crchcj4ghs" path="res://assets/super_groto_scape/Fx/Sprites/Pick Feedback 2/pick-feedback-2.png" id="4_c0670"]
 [ext_resource type="Texture2D" uid="uid://oj8qb27lnamg" path="res://assets/super_groto_scape/Characters/Player/spritesheets/player-run.png" id="4_rvdr0"]
+[ext_resource type="Texture2D" uid="uid://cckchyya0ge2x" path="res://assets/super_groto_scape/Fx/Sprites/Pick Feedback 2/pick-feedback-4.png" id="6_dpmp3"]
 [ext_resource type="Texture2D" uid="uid://co0fi5ydopg1i" path="res://assets/super_groto_scape/Characters/Player/spritesheets/player-shoot.png" id="6_k6p7b"]
+[ext_resource type="Texture2D" uid="uid://cef8ly7gahj1h" path="res://assets/super_groto_scape/Fx/Sprites/Pick Feedback 2/pick-feedback-5.png" id="7_wm5hu"]
+[ext_resource type="Texture2D" uid="uid://bnnx8ghbp05c4" path="res://assets/super_groto_scape/Fx/Sprites/Pick Feedback 2/pick-feedback-6.png" id="8_b0th8"]
+[ext_resource type="Texture2D" uid="uid://w7gb8pxnl7xs" path="res://assets/super_groto_scape/Fx/Sprites/Pick Feedback 2/pick-feedback-7.png" id="9_d0kvf"]
 [ext_resource type="Texture2D" uid="uid://dlg7auktnx21g" path="res://assets/super_groto_scape/Characters/Player/spritesheets/player-hurt.png" id="9_r7ai5"]
 [ext_resource type="AudioStream" uid="uid://wicema6ntaaj" path="res://assets/sounds/sfx/SFX_Jump_09.wav" id="9_uk15w"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_a6xn7"]
+frames = 6
+speed_scale = 3.0
+frame_0/texture = ExtResource("4_c0670")
+frame_1/texture = ExtResource("4_34ptn")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("6_dpmp3")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("7_wm5hu")
+frame_3/duration = 1.0
+frame_4/texture = ExtResource("8_b0th8")
+frame_4/duration = 1.0
+frame_5/texture = ExtResource("9_d0kvf")
+frame_5/duration = 1.0
+
+[sub_resource type="Gradient" id="Gradient_1hs3x"]
+offsets = PackedFloat32Array(0, 0.688742, 1)
+colors = PackedColorArray(0.294118, 0.862745, 1, 1, 0, 0.862745, 1, 1, 0, 0.662745, 1, 0.243137)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m4kfc"]
 radius = 8.0
 height = 32.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tl66h"]
+radius = 9.0
+height = 34.0
 
 [sub_resource type="Animation" id="Animation_tswjk"]
 length = 0.001
@@ -404,9 +433,35 @@ texture = ExtResource("2_iwq45")
 hframes = 6
 metadata/_edit_lock_ = true
 
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Pivot"]
+position = Vector2(3, 0)
+emitting = false
+amount = 50
+lifetime = 4.0
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+fixed_fps = 60
+texture = SubResource("AnimatedTexture_a6xn7")
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+scale_amount_min = 0.5
+scale_amount_max = 0.5
+color_ramp = SubResource("Gradient_1hs3x")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_m4kfc")
 metadata/_edit_lock_ = true
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CapsuleShape2D_tl66h")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -419,7 +474,7 @@ anim_player = NodePath("../AnimationPlayer")
 active = true
 
 [node name="Vulnerability" type="Timer" parent="."]
-wait_time = 1.5
+wait_time = 0.5
 
 [node name="Input" type="Timer" parent="."]
 wait_time = 0.5
