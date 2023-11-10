@@ -117,6 +117,13 @@ func get_health():
 func set_health(n):
 	health = n
 
+'''
+Setter of shoot_is_enable:
+	the param to set is a boolean.
+'''
+func set_shoot_is_enable(boolean):
+	shoot_is_enable = boolean
+
 func do_knockback( normal ):
 	velocity.y = vertical_knockback_speed
 	velocity.x = normal[0] * horizontal_knockback_speed

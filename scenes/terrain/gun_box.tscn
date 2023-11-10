@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://mrp8d25qiax0"]
+
+[ext_resource type="Script" path="res://scenes/terrain/gun_box.gd" id="1_fjcow"]
+[ext_resource type="Texture2D" uid="uid://w7d6yynxy64m" path="res://assets/guns/35.png" id="2_qcyiu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wy5lx"]
+size = Vector2(32, 25)
+
+[node name="gun_box" type="Area2D"]
+collision_mask = 4
+script = ExtResource("1_fjcow")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 1.90735e-06)
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("2_qcyiu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_wy5lx")
