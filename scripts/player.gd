@@ -15,6 +15,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var cpu_particles_2d = $Pivot/CPUParticles2D
 
 
+@onready var shoot_is_enable = true
 @onready var bullet_spawn: Marker2D = $Pivot/BulletSpawn
 @export var bullet_scene: PackedScene
 @onready var bullet_is_spawned : bool = false
@@ -54,13 +55,13 @@ func _physics_process(delta):
 			
 		velocity.x = move_toward(velocity.x, speed * move_input, acceleration * delta)
 
+		if shoot_is_enable:
+			if Input.is_action_just_pressed("bullet") and not bullet_is_spawned:
+				playback.travel("shoot")
+				return
 			
-		if Input.is_action_just_pressed("bullet") and not bullet_is_spawned:
-			playback.travel("shoot")
-			return
-		
-		if Input.is_action_just_pressed("time_stop"):
-			tstop()
+			if Input.is_action_just_pressed("time_stop"):
+				tstop()
 		
 		# ANIMATIONS
 		if velocity.x != 0 and move_input:

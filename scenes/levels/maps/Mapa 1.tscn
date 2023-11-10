@@ -8,13 +8,13 @@
 [ext_resource type="PackedScene" uid="uid://deh8jc38wesno" path="res://scenes/player/player.tscn" id="4_k3tv4"]
 [ext_resource type="PackedScene" uid="uid://bfd03xtdnuqj3" path="res://scenes/enemy/skeleton.tscn" id="5_k2825"]
 [ext_resource type="PackedScene" uid="uid://dref8rwyw1vpf" path="res://scenes/ui/end_level_screen.tscn" id="7_kyuxm"]
-[ext_resource type="PackedScene" uid="uid://b85a7ih2hvuwx" path="res://scenes/player/life_bar.tscn" id="8_fcm5q"]
+[ext_resource type="PackedScene" path="res://scenes/player/life_bar.tscn" id="8_fcm5q"]
 [ext_resource type="PackedScene" uid="uid://dkisjxciy6xkn" path="res://scenes/terrain/traps/tile_traps.tscn" id="8_ujbx1"]
 [ext_resource type="PackedScene" uid="uid://0oshvretw2uy" path="res://scenes/terrain/win_condition.tscn" id="9_nn6a3"]
 [ext_resource type="AudioStream" uid="uid://cl6htg8npdoum" path="res://assets/sounds/sfx/Retro Success Melody 01 - sawtooth lead 1.wav" id="10_2dfjd"]
 [ext_resource type="PackedScene" uid="uid://pidk2fxu1tlg" path="res://scenes/levels/demo_gun.tscn" id="11_vcp14"]
 [ext_resource type="AudioStream" uid="uid://2f6yfihxxu2e" path="res://assets/sounds/music/Density_Time_MAZE_loop.mp3" id="12_42la7"]
-[ext_resource type="PackedScene" uid="uid://csbhrrpjvdb1y" path="res://scenes/terrain/traps/die_area.tscn" id="14_4f5t8"]
+[ext_resource type="PackedScene" path="res://scenes/terrain/traps/die_area.tscn" id="14_4f5t8"]
 
 [node name="Main 1" type="Node2D"]
 script = ExtResource("1_cfdnd")

@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://ji755xubul0f"]
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://erp1jvvhvtf7"]
 
 [ext_resource type="PackedScene" uid="uid://bnrscqqi8hgs0" path="res://scenes/terrain/traps/spike_ball_launcher.tscn" id="1_ylw1s"]
 
