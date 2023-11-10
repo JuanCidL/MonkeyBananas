@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://otcxrtub651m"]
+[gd_scene load_steps=15 format=3 uid="uid://otcxrtub651m"]
 
 [ext_resource type="Texture2D" uid="uid://cbr7rnvv4ru8n" path="res://assets/backgrounds/Space Background.png" id="1_5f82o"]
+[ext_resource type="Script" path="res://scenes/levels/tutorial/tutorial_1.gd" id="1_wuvta"]
 [ext_resource type="PackedScene" path="res://scenes/player/life_bar.tscn" id="2_2aoc4"]
 [ext_resource type="PackedScene" uid="uid://f8pli3qn73wm" path="res://scenes/terrain/tile_map_grotto_escape.tscn" id="2_v7ipe"]
 [ext_resource type="PackedScene" uid="uid://dref8rwyw1vpf" path="res://scenes/ui/end_level_screen.tscn" id="3_6vhmy"]
@@ -12,8 +13,10 @@
 [ext_resource type="PackedScene" uid="uid://0oshvretw2uy" path="res://scenes/terrain/win_condition.tscn" id="10_tuulf"]
 [ext_resource type="AudioStream" uid="uid://cl6htg8npdoum" path="res://assets/sounds/sfx/Retro Success Melody 01 - sawtooth lead 1.wav" id="11_km6ch"]
 [ext_resource type="AudioStream" uid="uid://2f6yfihxxu2e" path="res://assets/sounds/music/Density_Time_MAZE_loop.mp3" id="12_tp75f"]
+[ext_resource type="PackedScene" uid="uid://chqwn1lfvwcxd" path="res://scenes/player/bullet.tscn" id="13_rcyye"]
 
 [node name="Tutorial_1" type="Node2D"]
+script = ExtResource("1_wuvta")
 
 [node name="SpaceBackground" type="Sprite2D" parent="."]
 position = Vector2(256, 192)
@@ -66,3 +69,7 @@ stream = ExtResource("12_tp75f")
 volume_db = -15.0
 pitch_scale = 0.8
 autoplay = true
+
+[node name="bullet" parent="." instance=ExtResource("13_rcyye")]
+position = Vector2(256, -400)
+rotation = 1.5708
