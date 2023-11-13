@@ -38,6 +38,7 @@ func _ready():
 	animation_tree.set("active", true)
 	hitbox.connect("body_entered", _on_body_enter)
 	Global.set_alive(true)
+	Global.gun_notifier.connect(set_shoot_is_enable)
 
 func _physics_process(delta):
 	
