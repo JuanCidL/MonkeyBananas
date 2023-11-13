@@ -89,18 +89,20 @@ func _physics_process(delta):
 	
 			
 func fire():
-	if not bullet_is_spawned:
-		if explotion != null:
-			explotion.destroy()
+	if Global.get_bullet_counter() != 0: 
+		Global.set_bullet_counter(Global.get_bullet_counter() - 1)
+		if not bullet_is_spawned:
+			if explotion != null:
+				explotion.destroy()
 
+				
+			bullet = bullet_scene.instantiate()
+			get_parent().add_child(bullet)
+			bullet.global_position = bullet_spawn.global_position
+			bullet.rotation = bullet_spawn.global_position.direction_to(get_global_mouse_position()).angle()
+			bullet_is_spawned = true
 			
-		bullet = bullet_scene.instantiate()
-		get_parent().add_child(bullet)
-		bullet.global_position = bullet_spawn.global_position
-		bullet.rotation = bullet_spawn.global_position.direction_to(get_global_mouse_position()).angle()
-		bullet_is_spawned = true
-		
-		bullet.tree_exited.connect(func(): bullet_is_spawned = false)
+			bullet.tree_exited.connect(func(): bullet_is_spawned = false)
 
 func tstop():
 	if bullet_is_spawned:

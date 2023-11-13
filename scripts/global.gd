@@ -3,6 +3,8 @@ extends Node
 @onready var back = $Back
 @onready var shot = $Shot
 @onready var portal = $Portal
+@onready var bullet_counter = -1
+signal bullet_notifier(bullet_counter: int)
 
 
 ## Escena del menu para tenerla siempre cargada
@@ -52,3 +54,17 @@ func play_shot():
 func play_portal():
 	portal.play()
 	
+'''
+Setter of param bullet_counter
+	param n: Int. Numbers of bullets
+'''
+func set_bullet_counter(n):
+	bullet_counter = n
+	bullet_notifier.emit(n)
+	
+'''
+Getter of param bullet_counter
+	param n: Int. Numbers of bullets
+'''
+func get_bullet_counter():
+	return bullet_counter
