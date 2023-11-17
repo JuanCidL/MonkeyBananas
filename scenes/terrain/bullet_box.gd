@@ -1,7 +1,7 @@
 extends Area2D
 #Cantidad de balas que suma una caja
 @export var bullet_sum = 3
-@onready osc = 0
+@onready var osc = 0
 
 
 func _ready():
@@ -20,4 +20,8 @@ func _on_body_entered(body: Node2D):
 			Global.set_bullet_counter(Global.get_bullet_counter() + bullet_sum)
 	queue_free()
 
-func 
+func _physics_process(delta):
+	osc = osc + delta
+	if osc >= 2*PI:
+		osc = 0
+	position.y = position.y + sin(10*osc)

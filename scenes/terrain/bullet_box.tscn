@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/terrain/bullet_box.gd" id="1_s27ql"]
 [ext_resource type="Shader" path="res://resources/outline_shader.gdshader" id="2_2ycls"]
-[ext_resource type="Texture2D" uid="uid://w7d6yynxy64m" path="res://assets/guns/35.png" id="2_86jfv"]
+[ext_resource type="Texture2D" uid="uid://dekx78fpitxwi" path="res://assets/super_groto_scape/Fx/Sprites/Player-Shoot/player-shoot1.png" id="3_st54i"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p7dq6"]
 shader = ExtResource("2_2ycls")
@@ -21,11 +21,10 @@ size = Vector2(17, 12)
 [node name="bullet_box" type="Area2D"]
 collision_mask = 4
 script = ExtResource("1_s27ql")
-bullet_sum = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_p7dq6")
-texture = ExtResource("2_86jfv")
+texture = ExtResource("3_st54i")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 material = SubResource("ShaderMaterial_sy3jm")

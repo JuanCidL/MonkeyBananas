@@ -23,6 +23,6 @@ func _update_bullets(count):
 
 func _change_gun_visibility(value: bool):
 	if value:
-		gun.modulate = Color(1, 1, 1)
+		gun.show()
 	else:
-		gun.modulate = Color(.5, .5, .5)
+		gun.hide()

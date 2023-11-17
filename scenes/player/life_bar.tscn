@@ -16,13 +16,13 @@ shader_parameter/inside = false
 shader_parameter/add_margins = true
 shader_parameter/number_of_images = Vector2(1, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xdpgv"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y10px"]
 shader = ExtResource("2_qr8yp")
 shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/width = 1.0
 shader_parameter/pattern = 0
 shader_parameter/inside = false
-shader_parameter/add_margins = false
+shader_parameter/add_margins = true
 shader_parameter/number_of_images = Vector2(1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qtc2g"]
@@ -42,6 +42,10 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 14.0
+offset_right = 5.0
+offset_bottom = 14.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_5x8a3")
@@ -56,7 +60,7 @@ texture_under = ExtResource("2_0hbho")
 texture_progress = ExtResource("3_lw4rx")
 
 [node name="Gun" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_xdpgv")
+material = SubResource("ShaderMaterial_y10px")
 position = Vector2(142.5, 18)
 texture = ExtResource("4_8qaxp")
 
