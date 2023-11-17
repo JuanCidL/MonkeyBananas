@@ -16,4 +16,5 @@ func _on_body_entered(body: Node2D):
 		if Global.get_bullet_counter() >= 0:
 			#Le sumo n balas al contador de balas  
 			Global.set_bullet_counter(default_bullets + Global.get_bullet_counter())
+	Global.set_gun_picked(true)
 	queue_free()

@@ -7,8 +7,10 @@ extends Node
 @onready var item_collect = $Item_Collect
 @onready var hit = $Hit
 @onready var bullet_counter = -1
-signal bullet_notifier(bullet_counter: int)
+@onready var has_gun = false
 
+signal bullet_notifier(bullet_counter: int)
+signal gun_notifier(value: bool)
 
 ## Escena del menu para tenerla siempre cargada
 var main_menu = preload("res://scenes/ui/main_menu.tscn")
@@ -80,3 +82,19 @@ Getter of param bullet_counter
 '''
 func get_bullet_counter():
 	return bullet_counter
+	
+"""
+State getter of gun in player
+	return -> boolean: true if player has gun, false if no.
+"""
+func get_gun_picked() -> bool:
+	return has_gun
+
+"""
+State getter for gun state
+	param value: boolean state to change
+	return -> void
+"""
+func set_gun_picked(value: bool) -> void:
+	has_gun = value
+	gun_notifier.emit(value)
