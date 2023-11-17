@@ -3,6 +3,9 @@ extends Node
 @onready var back = $Back
 @onready var shot = $Shot
 @onready var portal = $Portal
+@onready var death = $Death
+@onready var item_collect = $Item_Collect
+@onready var hit = $Hit
 @onready var bullet_counter = -1
 @onready var has_gun = false
 
@@ -55,7 +58,16 @@ func play_shot():
 
 func play_portal():
 	portal.play()
+
+func play_hit():
+	hit.play()
+
+func play_death():
+	death.play()
 	
+func play_item_collect():
+	item_collect.play()
+
 '''
 Setter of param bullet_counter
 	param n: Int. Numbers of bullets

@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://dpb2v7thpp5ew"]
+[gd_scene load_steps=9 format=3 uid="uid://dpb2v7thpp5ew"]
 
 [ext_resource type="Script" path="res://scripts/global.gd" id="1_pkgw5"]
 [ext_resource type="AudioStream" uid="uid://cj714t1nkqk7l" path="res://assets/sounds/sfx/confirm.wav" id="2_4t5d3"]
 [ext_resource type="AudioStream" uid="uid://b5q7l74fqaj3f" path="res://assets/sounds/sfx/back.wav" id="3_3qpts"]
 [ext_resource type="AudioStream" uid="uid://bfrjl3bci3ci0" path="res://assets/sounds/sfx/shot.wav" id="4_ojax5"]
 [ext_resource type="AudioStream" uid="uid://1ty3ro0e3db0" path="res://assets/sounds/sfx/portal.mp3" id="5_2hckx"]
+[ext_resource type="AudioStream" uid="uid://byrbs35dcmen8" path="res://assets/sounds/sfx/Death_Sound.mp3" id="6_2cr1h"]
+[ext_resource type="AudioStream" uid="uid://bc5rkoh88h06g" path="res://assets/sounds/sfx/Item_Collect.mp3" id="7_w7t6s"]
+[ext_resource type="AudioStream" uid="uid://bld0fsose62vb" path="res://assets/sounds/sfx/Hit_Sound.mp3" id="8_u3vwh"]
 
 [node name="global" type="Node"]
 script = ExtResource("1_pkgw5")
@@ -21,3 +24,14 @@ stream = ExtResource("4_ojax5")
 [node name="Portal" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_2hckx")
 volume_db = -5.0
+
+[node name="Death" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_2cr1h")
+volume_db = -5.0
+
+[node name="Item_Collect" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_w7t6s")
+
+[node name="Hit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_u3vwh")
+volume_db = 5.0
