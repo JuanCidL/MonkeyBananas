@@ -1,19 +1,33 @@
-[gd_scene load_steps=4 format=3 uid="uid://dlrnbu4unxuxs"]
+[gd_scene load_steps=7 format=3 uid="uid://dlrnbu4unxuxs"]
 
 [ext_resource type="Script" path="res://scenes/terrain/bullet_box.gd" id="1_s27ql"]
-[ext_resource type="Texture2D" uid="uid://s7hmgv8ouv8l" path="res://assets/icon.png" id="2_eovpu"]
+[ext_resource type="Shader" path="res://resources/outline_shader.gdshader" id="2_2ycls"]
+[ext_resource type="Texture2D" uid="uid://w7d6yynxy64m" path="res://assets/guns/35.png" id="2_86jfv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p7dq6"]
+shader = ExtResource("2_2ycls")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 1.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+shader_parameter/number_of_images = Vector2(1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sy3jm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2d3ly"]
-size = Vector2(32, 25)
+size = Vector2(17, 12)
 
 [node name="bullet_box" type="Area2D"]
 collision_mask = 4
 script = ExtResource("1_s27ql")
+bullet_sum = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("2_eovpu")
+material = SubResource("ShaderMaterial_p7dq6")
+texture = ExtResource("2_86jfv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 0.5)
+material = SubResource("ShaderMaterial_sy3jm")
+position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_2d3ly")
