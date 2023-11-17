@@ -144,7 +144,7 @@ func hit(damage, normal):
 	receive_damage(damage)
 	do_knockback(normal)
 	
-
+	
 func check_alive():
 	Global.lifebar.emit(health)
 	if (health == 0 or health < 0):
@@ -153,6 +153,7 @@ func check_alive():
 		Global.set_alive(false)
 		
 func die():
+	Global.play_death()
 	playback.travel("damage")
 	set_physics_process(false)
 	var tween = create_tween()
@@ -183,6 +184,7 @@ func _on_input_timeout():
 
 func _on_body_enter(node: Node2D):
 	if node.has_method("get_damage"):
+		Global.play_hit()
 		var dmg = node.get_damage()
 		var node_pos = node.global_position
 		var normal = (node_pos - global_position).normalized()
