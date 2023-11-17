@@ -1,5 +1,6 @@
 extends Area2D
 @export var default_bullets = 3
+@onready var osc = 0
 
 func _ready():
 	## Conccion con la señal que emite que se toco la caja
@@ -18,3 +19,10 @@ func _on_body_entered(body: Node2D):
 			Global.set_bullet_counter(default_bullets + Global.get_bullet_counter())
 	Global.set_gun_picked(true)
 	queue_free()
+
+
+func _physics_process(delta):
+	osc = osc + delta
+	if osc >= 2*PI:
+		osc = 0
+	position.y = position.y + sin(10*osc)

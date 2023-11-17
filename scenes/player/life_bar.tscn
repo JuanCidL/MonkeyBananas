@@ -1,10 +1,38 @@
-[gd_scene load_steps=7 format=3 uid="uid://b85a7ih2hvuwx"]
+[gd_scene load_steps=11 format=3 uid="uid://b85a7ih2hvuwx"]
 
 [ext_resource type="Script" path="res://scenes/player/life_bar.gd" id="1_5x8a3"]
 [ext_resource type="Texture2D" uid="uid://7x3l6wqvp2yr" path="res://assets/lifebar/empty.png" id="2_0hbho"]
+[ext_resource type="Shader" path="res://resources/outline_shader.gdshader" id="2_qr8yp"]
 [ext_resource type="Texture2D" uid="uid://bsl781cr4tp3o" path="res://assets/lifebar/full.png" id="3_lw4rx"]
 [ext_resource type="Texture2D" uid="uid://w7d6yynxy64m" path="res://assets/guns/35.png" id="4_8qaxp"]
 [ext_resource type="Texture2D" uid="uid://d1dsyfoaemqlf" path="res://assets/super_groto_scape/Fx/Sprites/Player-Shoot/player-shoot2.png" id="5_fnk1k"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f55e5"]
+shader = ExtResource("2_qr8yp")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 1.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+shader_parameter/number_of_images = Vector2(1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y10px"]
+shader = ExtResource("2_qr8yp")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 1.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+shader_parameter/number_of_images = Vector2(1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qtc2g"]
+shader = ExtResource("2_qr8yp")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 1.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+shader_parameter/number_of_images = Vector2(1, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_fklab"]
 font_size = 11
@@ -14,12 +42,17 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 14.0
+offset_right = 5.0
+offset_bottom = 14.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_5x8a3")
 metadata/_edit_horizontal_guides_ = []
 
 [node name="LifeBar" type="TextureProgressBar" parent="."]
+material = SubResource("ShaderMaterial_f55e5")
 layout_mode = 2
 max_value = 50.0
 value = 50.0
@@ -27,10 +60,12 @@ texture_under = ExtResource("2_0hbho")
 texture_progress = ExtResource("3_lw4rx")
 
 [node name="Gun" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_y10px")
 position = Vector2(142.5, 18)
 texture = ExtResource("4_8qaxp")
 
 [node name="Bullet" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_qtc2g")
 position = Vector2(141, 37)
 texture = ExtResource("5_fnk1k")
 
