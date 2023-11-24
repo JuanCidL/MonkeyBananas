@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://blhwxsjgmvb1u"]
+[gd_scene load_steps=8 format=3 uid="uid://blhwxsjgmvb1u"]
 
 [ext_resource type="Script" path="res://scenes/player/time_stop_effect.gd" id="1_f4rsf"]
 [ext_resource type="Shader" path="res://scenes/player/time_stop_effect.gdshader" id="1_f6m5s"]
+[ext_resource type="Texture2D" uid="uid://c0vy2rpbou3e6" path="res://scenes/player/gradient.tres" id="2_4wpjp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a6eeo"]
 shader = ExtResource("1_f6m5s")
@@ -23,6 +24,24 @@ script = ExtResource("1_f4rsf")
 material = SubResource("ShaderMaterial_a6eeo")
 scale = Vector2(0.1, 0.1)
 texture = SubResource("CanvasTexture_d17ty")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 448.0
+offset_bottom = 448.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.25, 0.25)
+value = 100.0
+fill_mode = 4
+texture_progress = ExtResource("2_4wpjp")
 
 [node name="GPUParticles2D" type="CPUParticles2D" parent="."]
 material = SubResource("ShaderMaterial_l2out")
