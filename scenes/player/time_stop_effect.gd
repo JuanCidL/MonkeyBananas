@@ -12,10 +12,12 @@ func _ready():
 	tween.set_ease(Tween.EASE_IN)
 	tween.set_trans(Tween.TRANS_QUINT)
 	tween.tween_property(effect, "scale", final_scale, dt)
+	tween.parallel().tween_property($TextureProgressBar, "modulate:a", 0.5, dt)
 	await tween.finished
 	connect("body_entered", _on_body_entered)
 	for body in get_overlapping_bodies():
 		stop(body)
+	create_tween().tween_property($TextureProgressBar, "value", 0, 3).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	await get_tree().create_timer(3).timeout
 	if myself != null:
 		destroy()
