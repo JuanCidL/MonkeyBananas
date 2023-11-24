@@ -5,7 +5,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	player.shoot_is_enable = false
+	player.shoot_is_enable = true
 	
 
 
