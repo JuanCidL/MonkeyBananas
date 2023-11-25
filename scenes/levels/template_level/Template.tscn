@@ -1,0 +1,43 @@
+[gd_scene load_steps=10 format=3 uid="uid://bymh6ra6ovpa3"]
+
+[ext_resource type="Script" path="res://scenes/levels/template_level/template_script.gd" id="1_q6cph"]
+[ext_resource type="PackedScene" uid="uid://deh8jc38wesno" path="res://scenes/player/player.tscn" id="1_tdo2b"]
+[ext_resource type="PackedScene" uid="uid://dkisjxciy6xkn" path="res://scenes/terrain/traps/tile_traps.tscn" id="2_fjyd7"]
+[ext_resource type="PackedScene" uid="uid://dbppaq88ikpsl" path="res://scenes/ui/player_ui.tscn" id="2_pfqau"]
+[ext_resource type="PackedScene" uid="uid://f8pli3qn73wm" path="res://scenes/terrain/tile_map_grotto_escape.tscn" id="3_rjqmo"]
+[ext_resource type="PackedScene" uid="uid://0oshvretw2uy" path="res://scenes/terrain/win_condition.tscn" id="4_m376l"]
+[ext_resource type="AudioStream" uid="uid://cl6htg8npdoum" path="res://assets/sounds/sfx/Retro Success Melody 01 - sawtooth lead 1.wav" id="5_i0eas"]
+[ext_resource type="AudioStream" uid="uid://2f6yfihxxu2e" path="res://assets/sounds/music/Density_Time_MAZE_loop.mp3" id="7_i2tax"]
+[ext_resource type="PackedScene" uid="uid://csbhrrpjvdb1y" path="res://scenes/terrain/traps/die_area.tscn" id="8_kjr8l"]
+
+[node name="Template" type="Node2D"]
+script = ExtResource("1_q6cph")
+
+[node name="Background" type="Sprite2D" parent="."]
+
+[node name="Player" parent="." instance=ExtResource("1_tdo2b")]
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="TileTraps" parent="." instance=ExtResource("2_fjyd7")]
+
+[node name="TileMap" parent="." instance=ExtResource("3_rjqmo")]
+
+[node name="WinCondition" parent="." instance=ExtResource("4_m376l")]
+position = Vector2(2872, 1179)
+
+[node name="WinSound" type="AudioStreamPlayer2D" parent="WinCondition"]
+process_mode = 3
+position = Vector2(-488, -274)
+stream = ExtResource("5_i0eas")
+pitch_scale = 0.8
+
+[node name="PlayerUI" parent="." instance=ExtResource("2_pfqau")]
+
+[node name="MazeLoop" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_i2tax")
+volume_db = -15.0
+pitch_scale = 0.8
+autoplay = true
+
+[node name="die_area" parent="." instance=ExtResource("8_kjr8l")]

@@ -155,4 +155,6 @@ tree_root = SubResource("AnimationNodeAnimation_vcjv0")
 anim_player = NodePath("../AnimationPlayer")
 active = true
 
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+
 [editable path="PlayerAnimations"]

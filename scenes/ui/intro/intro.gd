@@ -8,9 +8,16 @@ extends Node2D
 @onready var bullet: Area2D
 @onready var explotion = $Explotion
 @onready var gpu_particles_2d: CPUParticles2D = $GPUParticles2D
+@onready var canvas_modulate = $CanvasModulate
 
 func _ready():
 	area_2d.connect("area_entered", explode)
+	canvas_modulate.color = Color(0,0,0)
+	var canvas_tween = create_tween().set_parallel()
+	canvas_tween.tween_property(canvas_modulate, "color:r", 1, 3)
+	canvas_tween.tween_property(canvas_modulate, "color:g", 1, 3)
+	canvas_tween.tween_property(canvas_modulate, "color:b", 1, 3)
+	
 	
 func shoot():
 	bullet = bullet_scene.instantiate()

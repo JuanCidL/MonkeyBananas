@@ -15,7 +15,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var cpu_particles_2d = $Pivot/CPUParticles2D
 
 
-@onready var shoot_is_enable = true
+@export var shoot_is_enable: bool
 @onready var bullet_spawn: Marker2D = $Pivot/BulletSpawn
 @export var bullet_scene: PackedScene
 @onready var bullet_is_spawned : bool = false
@@ -38,6 +38,7 @@ func _ready():
 	animation_tree.set("active", true)
 	hitbox.connect("body_entered", _on_body_enter)
 	Global.set_alive(true)
+	#Global.set_gun_picked(shoot_is_enable)
 	Global.gun_notifier.connect(set_shoot_is_enable)
 
 func _physics_process(delta):

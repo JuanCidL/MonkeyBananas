@@ -8,3 +8,5 @@ func _ready():
 func _on_body_enter(body: Node2D):
 	if body.has_method("receive_damage"):
 		body.receive_damage(100)
+	elif body.has_method("time_stop"):
+		body.queue_free()

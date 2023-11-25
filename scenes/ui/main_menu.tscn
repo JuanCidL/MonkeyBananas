@@ -1,13 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://dl8bgs3qdcvkg"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_xrf5t"]
+[ext_resource type="Texture2D" uid="uid://bnbn57rgwrgwh" path="res://assets/backgrounds/main_menu_background.png" id="2_dv3x3"]
 [ext_resource type="PackedScene" uid="uid://0uaurdmc3uf3" path="res://scenes/ui/intro/intro.tscn" id="2_txffd"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_bc8vp"]
-font_size = 30
-font_color = Color(0.141176, 0.294118, 1, 1)
-outline_size = 5
-outline_color = Color(0.6, 0.964706, 1, 1)
 
 [node name="MainMenu" type="MarginContainer"]
 anchors_preset = 15
@@ -17,6 +12,10 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xrf5t")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_dv3x3")
+offset = Vector2(256, 192)
+
 [node name="SelectButtons" type="VBoxContainer" parent="."]
 layout_mode = 2
 size_flags_horizontal = 4
@@ -25,8 +24,8 @@ size_flags_vertical = 4
 [node name="Tittle" type="Label" parent="SelectButtons"]
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 40
 text = "Banana Time"
-label_settings = SubResource("LabelSettings_bc8vp")
 
 [node name="Play" type="Button" parent="SelectButtons"]
 layout_mode = 2

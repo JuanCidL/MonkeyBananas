@@ -43,6 +43,7 @@ func _on_play_pressed():
 
 func _on_credits_pressed():
 	Global.play_confirm()
+	get_tree().change_scene_to_file("res://scenes/ui/credits.tscn")
 
 func _on_exit_pressed():
 	await Global.play_back()

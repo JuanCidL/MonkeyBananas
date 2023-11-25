@@ -28,10 +28,13 @@ func _physics_process(delta):
 		pivot.scale.x *= -1
 		
 
+	if direction == 0:
+		velocity -= get_platform_velocity()
+	
+	animated_sprite_2d.play("walk")
 		
 	move_and_slide()
 	
-	animated_sprite_2d.play("walk")
 	
 	
 
@@ -46,6 +49,7 @@ func time_stop():
 	prev_direction = direction
 	direction = 0
 	animated_sprite_2d.speed_scale = 0
+	
 	
 func resume():
 	direction = prev_direction

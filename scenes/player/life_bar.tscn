@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b85a7ih2hvuwx"]
+[gd_scene load_steps=10 format=3 uid="uid://b85a7ih2hvuwx"]
 
 [ext_resource type="Script" path="res://scenes/player/life_bar.gd" id="1_5x8a3"]
 [ext_resource type="Texture2D" uid="uid://7x3l6wqvp2yr" path="res://assets/lifebar/empty.png" id="2_0hbho"]
@@ -34,18 +34,11 @@ shader_parameter/inside = false
 shader_parameter/add_margins = true
 shader_parameter/number_of_images = Vector2(1, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_fklab"]
-font_size = 11
-
 [node name="Container" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 5.0
-offset_top = 14.0
-offset_right = 5.0
-offset_bottom = 14.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_5x8a3")
@@ -70,12 +63,11 @@ position = Vector2(141, 37)
 texture = ExtResource("5_fnk1k")
 
 [node name="Label" type="Label" parent="Bullet"]
-offset_left = -11.0
-offset_top = 5.0
-offset_right = 16.0
-offset_bottom = 24.0
-pivot_offset = Vector2(12.5, 9.5)
+offset_left = -12.0
+offset_top = 4.0
+offset_right = 15.0
+offset_bottom = 27.0
+pivot_offset = Vector2(13, 11)
 text = "8"
-label_settings = SubResource("LabelSettings_fklab")
 horizontal_alignment = 1
 vertical_alignment = 1
