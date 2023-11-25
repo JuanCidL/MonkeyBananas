@@ -420,6 +420,7 @@ graph_offset = Vector2(-86, -21.1612)
 collision_layer = 4
 collision_mask = 11
 script = ExtResource("1_hs4xo")
+shoot_is_enable = true
 bullet_scene = ExtResource("2_uplmb")
 
 [node name="Pivot" type="Node2D" parent="."]

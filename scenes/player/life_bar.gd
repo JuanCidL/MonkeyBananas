@@ -8,7 +8,6 @@ extends Control
 func _ready():
 	Global.lifebar.connect(_set_health)
 	Global.bullet_notifier.connect(_update_bullets)
-	_change_gun_visibility(false)
 	Global.gun_notifier.connect(_change_gun_visibility)
 
 func _set_health(healt: int):

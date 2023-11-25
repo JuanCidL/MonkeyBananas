@@ -1,0 +1,174 @@
+[gd_scene load_steps=13 format=3 uid="uid://d4i1pga22f773"]
+
+[ext_resource type="Script" path="res://scenes/levels/maps/level_3.gd" id="1_j0xo1"]
+[ext_resource type="PackedScene" uid="uid://deh8jc38wesno" path="res://scenes/player/player.tscn" id="1_wks4h"]
+[ext_resource type="PackedScene" uid="uid://f8pli3qn73wm" path="res://scenes/terrain/tile_map_grotto_escape.tscn" id="2_6anpg"]
+[ext_resource type="Texture2D" uid="uid://dcwtwas7gjmwl" path="res://assets/backgrounds/Space Background lvl3.png" id="2_dmhsp"]
+[ext_resource type="PackedScene" uid="uid://cvakqgt6bhjq1" path="res://scenes/plataforma/plataforma.tscn" id="3_hh0re"]
+[ext_resource type="Script" path="res://scenes/plataforma/platform_group.gd" id="3_o6p2p"]
+[ext_resource type="PackedScene" uid="uid://bfd03xtdnuqj3" path="res://scenes/enemy/skeleton.tscn" id="6_i87dr"]
+[ext_resource type="PackedScene" uid="uid://dbppaq88ikpsl" path="res://scenes/ui/player_ui.tscn" id="7_cs7qx"]
+[ext_resource type="PackedScene" uid="uid://0oshvretw2uy" path="res://scenes/terrain/win_condition.tscn" id="8_dlcsu"]
+[ext_resource type="AudioStream" uid="uid://cl6htg8npdoum" path="res://assets/sounds/sfx/Retro Success Melody 01 - sawtooth lead 1.wav" id="9_00bei"]
+[ext_resource type="AudioStream" uid="uid://2f6yfihxxu2e" path="res://assets/sounds/music/Density_Time_MAZE_loop.mp3" id="10_004c0"]
+[ext_resource type="PackedScene" uid="uid://csbhrrpjvdb1y" path="res://scenes/terrain/traps/die_area.tscn" id="11_jvgri"]
+
+[node name="Level3" type="Node2D"]
+script = ExtResource("1_j0xo1")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("2_dmhsp")
+offset = Vector2(256, 192)
+
+[node name="Player" parent="." instance=ExtResource("1_wks4h")]
+position = Vector2(56, 312)
+
+[node name="Mob" parent="." instance=ExtResource("6_i87dr")]
+position = Vector2(200, 215)
+
+[node name="Mob2" parent="." instance=ExtResource("6_i87dr")]
+position = Vector2(152, 248)
+
+[node name="Mob3" parent="." instance=ExtResource("6_i87dr")]
+position = Vector2(144, 144)
+
+[node name="Mob4" parent="." instance=ExtResource("6_i87dr")]
+position = Vector2(208, 96)
+
+[node name="Mob5" parent="." instance=ExtResource("6_i87dr")]
+position = Vector2(456, 144)
+
+[node name="Mob6" parent="." instance=ExtResource("6_i87dr")]
+position = Vector2(464, 248)
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(192, 240)
+script = ExtResource("3_o6p2p")
+
+[node name="Plataforma" parent="Node2D" instance=ExtResource("3_hh0re")]
+movement = Vector2(100, 0)
+timing = 4.0
+
+[node name="Plataforma2" parent="Node2D" instance=ExtResource("3_hh0re")]
+position = Vector2(16, 0)
+movement = Vector2(100, 0)
+timing = 4.0
+
+[node name="Plataforma3" parent="Node2D" instance=ExtResource("3_hh0re")]
+position = Vector2(32, 0)
+movement = Vector2(100, 0)
+timing = 4.0
+
+[node name="Node2D6" type="Node2D" parent="."]
+position = Vector2(192, 120)
+script = ExtResource("3_o6p2p")
+
+[node name="Plataforma" parent="Node2D6" instance=ExtResource("3_hh0re")]
+movement = Vector2(100, 0)
+timing = 4.0
+
+[node name="Plataforma2" parent="Node2D6" instance=ExtResource("3_hh0re")]
+position = Vector2(16, 0)
+movement = Vector2(100, 0)
+timing = 4.0
+
+[node name="Plataforma3" parent="Node2D6" instance=ExtResource("3_hh0re")]
+position = Vector2(32, 0)
+movement = Vector2(100, 0)
+timing = 4.0
+
+[node name="Node2D2" type="Node2D" parent="."]
+position = Vector2(136, 272)
+script = ExtResource("3_o6p2p")
+
+[node name="Plataforma" parent="Node2D2" instance=ExtResource("3_hh0re")]
+movement = Vector2(-100, 0)
+timing = 4.0
+
+[node name="Plataforma2" parent="Node2D2" instance=ExtResource("3_hh0re")]
+position = Vector2(16, 0)
+movement = Vector2(-100, 0)
+timing = 4.0
+
+[node name="Plataforma3" parent="Node2D2" instance=ExtResource("3_hh0re")]
+position = Vector2(32, 0)
+movement = Vector2(-100, 0)
+timing = 4.0
+
+[node name="Node2D3" type="Node2D" parent="."]
+position = Vector2(448, 272)
+script = ExtResource("3_o6p2p")
+
+[node name="Plataforma" parent="Node2D3" instance=ExtResource("3_hh0re")]
+movement = Vector2(-100, 0)
+timing = 4.0
+
+[node name="Plataforma2" parent="Node2D3" instance=ExtResource("3_hh0re")]
+position = Vector2(16, 0)
+movement = Vector2(-100, 0)
+timing = 4.0
+
+[node name="Plataforma3" parent="Node2D3" instance=ExtResource("3_hh0re")]
+position = Vector2(32, 0)
+movement = Vector2(-100, 0)
+timing = 4.0
+
+[node name="Node2D4" type="Node2D" parent="."]
+position = Vector2(448, 168)
+script = ExtResource("3_o6p2p")
+
+[node name="Plataforma" parent="Node2D4" instance=ExtResource("3_hh0re")]
+movement = Vector2(-100, 0)
+timing = 4.0
+
+[node name="Plataforma2" parent="Node2D4" instance=ExtResource("3_hh0re")]
+position = Vector2(16, 0)
+movement = Vector2(-100, 0)
+timing = 4.0
+
+[node name="Plataforma3" parent="Node2D4" instance=ExtResource("3_hh0re")]
+position = Vector2(32, 0)
+movement = Vector2(-100, 0)
+timing = 4.0
+
+[node name="Node2D5" type="Node2D" parent="."]
+position = Vector2(136, 168)
+script = ExtResource("3_o6p2p")
+
+[node name="Plataforma" parent="Node2D5" instance=ExtResource("3_hh0re")]
+movement = Vector2(-100, 0)
+timing = 4.0
+
+[node name="Plataforma2" parent="Node2D5" instance=ExtResource("3_hh0re")]
+position = Vector2(16, 0)
+movement = Vector2(-100, 0)
+timing = 4.0
+
+[node name="Plataforma3" parent="Node2D5" instance=ExtResource("3_hh0re")]
+position = Vector2(32, 0)
+movement = Vector2(-100, 0)
+timing = 4.0
+
+[node name="player_ui" parent="." instance=ExtResource("7_cs7qx")]
+
+[node name="TileMap" parent="." instance=ExtResource("2_6anpg")]
+layer_0/tile_data = PackedInt32Array(1507359, 196609, 4, 1441823, 196609, 4, 1376287, 196609, 4, 1507358, 196609, 5, 1441822, 65537, 5, 1376286, 65537, 4, 1507357, 65537, 5, 1441821, 196609, 5, 1376285, 65537, 4, 1507356, 65537, 5, 1441820, 196609, 5, 1376284, 131073, 4, 1507355, 262145, 5, 1441819, 65537, 5, 1376283, 131073, 4, 1507354, 262145, 5, 1441818, 262145, 5, 1376282, 131073, 4, 1507353, 262145, 5, 1441817, 65537, 5, 1376281, 262145, 4, 1507352, 196609, 5, 1441816, 262145, 5, 1376280, 131073, 4, 1507351, 262145, 5, 1441815, 196609, 5, 1376279, 65537, 4, 1507350, 65537, 5, 1441814, 196609, 5, 1376278, 262145, 4, 1507349, 196609, 4, 1441813, 65537, 4, 1376277, 131073, 4, 1507337, 196609, 4, 1441801, 196609, 4, 1376265, 131073, 4, 1507336, 196609, 5, 1441800, 262145, 5, 1376264, 262145, 4, 1507335, 65537, 5, 1441799, 196609, 5, 1376263, 196609, 4, 1507334, 196609, 5, 1441798, 65537, 5, 1376262, 262145, 4, 1507333, 262145, 5, 1441797, 262145, 5, 1376261, 65537, 4, 1507332, 65537, 5, 1441796, 65537, 5, 1376260, 196609, 4, 1507331, 196609, 5, 1441795, 65537, 5, 1376259, 262145, 4, 1507330, 65537, 5, 1441794, 262145, 5, 1376258, 196609, 4, 1507329, 196609, 5, 1441793, 196609, 5, 1376257, 65537, 4, 1507328, 262145, 4, 1441792, 262145, 4, 1376256, 196609, 4, 262168, 262145, 4, 327704, 196609, 5, 327705, 196609, 5, 327706, 262145, 5, 327707, 196609, 5, 327708, 262145, 5, 327709, 196609, 5, 327710, 262145, 5, 327711, 131073, 4, 262175, 196609, 4, 262174, 196609, 4, 262173, 262145, 4, 262172, 131073, 4, 262171, 65537, 4, 262170, 131073, 4, 262169, 262145, 4, 65535, 262145, 4, 131071, 262145, 5, 196607, 196609, 5, 262143, 262145, 5, 327679, 262145, 5, 393215, 196609, 5, 458751, 65537, 5, 524287, 65537, 5, 589823, 196609, 5, 655359, 196609, 5, 720895, 196609, 5, 786431, 196609, 5, 851967, 65537, 5, 917503, 196609, 5, 983039, 262145, 5, 1048575, 65537, 5, 1114111, 65537, 5, 1179647, 65537, 5, 1245183, 65537, 5, 1310719, 65537, 5, 1376255, 196609, 5, 1441791, 196609, 5, 1507327, 196609, 5, 1572863, 196609, 5, -65505, 196609, 4, -65506, 196609, 4, -65507, 196609, 4, -65508, 65537, 4, -65509, 262145, 4, -65510, 65537, 4, -65511, 131073, 4, -65512, 65537, 4, -65513, 131073, 4, -65514, 196609, 4, -65515, 196609, 4, -65516, 131073, 4, -65517, 131073, 4, -65518, 262145, 4, -65519, 196609, 4, -65520, 196609, 4, -65521, 65537, 4, -65522, 65537, 4, -65523, 196609, 4, -65524, 262145, 4, -65525, 262145, 4, -65526, 65537, 4, -65527, 196609, 4, -65528, 262145, 4, -65529, 196609, 4, -65530, 196609, 4, -65531, 196609, 4, -65532, 131073, 4, -65533, 196609, 4, -65534, 65537, 4, -65535, 262145, 4, -65536, 131073, 4, 1507360, 196609, 5, 1441824, 262145, 5, 1376288, 262145, 5, 1310752, 196609, 5, 1245216, 65537, 5, 1179680, 65537, 5, 1114144, 196609, 5, 1048608, 262145, 5, 983072, 196609, 5, 917536, 65537, 5, 852000, 196609, 5, 786464, 65537, 5, 720928, 262145, 5, 655392, 196609, 5, 589856, 196609, 5, 524320, 65537, 5, 458784, 262145, 5, 393248, 196609, 5, 327712, 196609, 5, 262176, 196609, 5, 196640, 65537, 5, 131104, 65537, 5, 65568, 262145, 5, 32, 131073, 4, 65562, 589826, 7, 131098, 589826, 8, 196634, 589826, 9, 65563, 655362, 7, 131099, 655362, 8, 196635, 655362, 9, 65564, 720898, 7, 131100, 720898, 8, 196636, 720898, 9)
+
+[node name="WinCondition" parent="." instance=ExtResource("8_dlcsu")]
+position = Vector2(440, 56)
+
+[node name="WinSound" type="AudioStreamPlayer2D" parent="WinCondition"]
+process_mode = 3
+position = Vector2(-488, -274)
+stream = ExtResource("9_00bei")
+pitch_scale = 0.8
+
+[node name="MazeLoop" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_004c0")
+volume_db = -15.0
+pitch_scale = 0.8
+autoplay = true
+
+[node name="die_area" parent="." instance=ExtResource("11_jvgri")]
+position = Vector2(256, 392)
+scale = Vector2(12.795, 0.72)

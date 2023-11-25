@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://dbppaq88ikpsl"]
+
+[ext_resource type="Script" path="res://scenes/ui/player_ui.gd" id="1_yl0tc"]
+[ext_resource type="PackedScene" uid="uid://b85a7ih2hvuwx" path="res://scenes/player/life_bar.tscn" id="2_m780b"]
+[ext_resource type="PackedScene" uid="uid://dref8rwyw1vpf" path="res://scenes/ui/end_level_screen.tscn" id="3_tbr2v"]
+
+[node name="PlayerUI" type="CanvasLayer"]
+visible = false
+script = ExtResource("1_yl0tc")
+
+[node name="Container" parent="." instance=ExtResource("2_m780b")]
+
+[node name="EndLevelScreen" parent="." instance=ExtResource("3_tbr2v")]

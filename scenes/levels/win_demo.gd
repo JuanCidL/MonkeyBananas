@@ -5,6 +5,6 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	player.shoot_is_enable = false
+	Global.set_gun_picked(false)
 	maze_loop.play()
 	Global.set_bullet_counter(1)
