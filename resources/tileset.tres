@@ -1,10 +1,11 @@
-[gd_resource type="TileSet" load_steps=14 format=3 uid="uid://m15e2oggq7pe"]
+[gd_resource type="TileSet" load_steps=16 format=3 uid="uid://m15e2oggq7pe"]
 
 [ext_resource type="Texture2D" uid="uid://bv0fx8nkfysqs" path="res://assets/super_groto_scape/Environment/Layers/tileset.png" id="1_7lt8y"]
 [ext_resource type="PackedScene" uid="uid://cvakqgt6bhjq1" path="res://scenes/plataforma/plataforma.tscn" id="1_imoao"]
 [ext_resource type="Texture2D" uid="uid://dhdt3ql4rld80" path="res://assets/super_groto_scape/Environment/Layers/tileset-2.png" id="2_hyr0c"]
 [ext_resource type="Texture2D" uid="uid://drwbdsm2clhqc" path="res://assets/super_groto_scape/Environment/Layers/tiledemo.png" id="4_lxlnq"]
 [ext_resource type="Texture2D" uid="uid://c0qx6vfmmxx6d" path="res://assets/super_groto_scape/Environment/Layers/props/plant.png" id="5_4a04a"]
+[ext_resource type="PackedScene" uid="uid://cjew8be3qqt30" path="res://scenes/terrain/falling_block.tscn" id="5_wdqaw"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_mrfff"]
 tile_data = PackedInt32Array(0, 524289, 4, 65536, 524289, 5, 131072, 524289, 6, 196608, 524289, 7, 262144, 524289, 8, 327680, 524289, 9, 1, 589825, 4, 65537, 589825, 5, 131073, 589825, 6, 196609, 589825, 7, 262145, 589825, 8, 327681, 589825, 9, 2, 655361, 4, 65538, 655361, 5, 131074, 655361, 6, 196610, 655361, 7, 262146, 655361, 8, 327682, 655361, 9)
@@ -1973,6 +1974,9 @@ texture = ExtResource("4_lxlnq")
 64:14/0/physics_layer_0/angular_velocity = 0.0
 64:14/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_ocblx"]
+scenes/1/scene = ExtResource("5_wdqaw")
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_04i6b"]
 texture = ExtResource("5_4a04a")
 
@@ -1994,6 +1998,7 @@ sources/2 = SubResource("TileSetAtlasSource_8gd01")
 sources/0 = SubResource("TileSetScenesCollectionSource_1mym0")
 sources/3 = SubResource("TileSetAtlasSource_3qnbb")
 sources/5 = SubResource("TileSetAtlasSource_04i6b")
+sources/4 = SubResource("TileSetScenesCollectionSource_ocblx")
 pattern_0 = SubResource("TileMapPattern_mrfff")
 pattern_1 = SubResource("TileMapPattern_e085m")
 pattern_2 = SubResource("TileMapPattern_xu7kl")

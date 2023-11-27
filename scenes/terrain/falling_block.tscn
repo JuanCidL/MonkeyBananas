@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://cjew8be3qqt30"]
+
+[ext_resource type="Texture2D" uid="uid://m4pw317qsnij" path="res://assets/super_groto_scape/Props/Sprites/big-crate.png" id="1_7so2y"]
+[ext_resource type="Script" path="res://scenes/terrain/falling_block.gd" id="1_nrc7t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_puoxr"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_joy6p"]
+size = Vector2(16, 4)
+
+[node name="falling_block" type="RigidBody2D"]
+collision_layer = 17
+collision_mask = 7
+freeze = true
+script = ExtResource("1_nrc7t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_puoxr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.457, 0.5)
+texture = ExtResource("1_7so2y")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -7)
+shape = SubResource("RectangleShape2D_joy6p")

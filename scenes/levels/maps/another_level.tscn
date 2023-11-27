@@ -1,0 +1,49 @@
+[gd_scene load_steps=11 format=3 uid="uid://bslraahg6x3j3"]
+
+[ext_resource type="Script" path="res://scenes/levels/maps/another_level.gd" id="1_rmt86"]
+[ext_resource type="PackedScene" uid="uid://deh8jc38wesno" path="res://scenes/player/player.tscn" id="2_e7pk2"]
+[ext_resource type="PackedScene" uid="uid://bfd03xtdnuqj3" path="res://scenes/enemy/skeleton.tscn" id="2_nxbay"]
+[ext_resource type="PackedScene" uid="uid://dkisjxciy6xkn" path="res://scenes/terrain/traps/tile_traps.tscn" id="3_denke"]
+[ext_resource type="PackedScene" uid="uid://f8pli3qn73wm" path="res://scenes/terrain/tile_map_grotto_escape.tscn" id="4_86lu7"]
+[ext_resource type="PackedScene" uid="uid://0oshvretw2uy" path="res://scenes/terrain/win_condition.tscn" id="5_fa5vw"]
+[ext_resource type="AudioStream" uid="uid://cl6htg8npdoum" path="res://assets/sounds/sfx/Retro Success Melody 01 - sawtooth lead 1.wav" id="6_kq2i7"]
+[ext_resource type="PackedScene" uid="uid://dbppaq88ikpsl" path="res://scenes/ui/player_ui.tscn" id="7_a3qrl"]
+[ext_resource type="AudioStream" uid="uid://2f6yfihxxu2e" path="res://assets/sounds/music/Density_Time_MAZE_loop.mp3" id="8_w4h4t"]
+[ext_resource type="PackedScene" uid="uid://csbhrrpjvdb1y" path="res://scenes/terrain/traps/die_area.tscn" id="9_8h5i2"]
+
+[node name="Template" type="Node2D"]
+script = ExtResource("1_rmt86")
+
+[node name="Mob" parent="." instance=ExtResource("2_nxbay")]
+position = Vector2(19, -1092)
+
+[node name="Background" type="Sprite2D" parent="."]
+
+[node name="Player" parent="." instance=ExtResource("2_e7pk2")]
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="TileTraps" parent="." instance=ExtResource("3_denke")]
+
+[node name="TileMap" parent="." instance=ExtResource("4_86lu7")]
+layer_0/tile_data = PackedInt32Array(327683, 4, 65536, 327684, 4, 65536, 327685, 4, 65536, 524294, 4, 65536, 524295, 4, 65536, 524296, 4, 65536, 262143, 2359299, 13, 196608, 2359299, 13, 196609, 2359299, 13)
+
+[node name="WinCondition" parent="." instance=ExtResource("5_fa5vw")]
+position = Vector2(2872, 1179)
+
+[node name="WinSound" type="AudioStreamPlayer2D" parent="WinCondition"]
+process_mode = 3
+position = Vector2(-488, -274)
+stream = ExtResource("6_kq2i7")
+pitch_scale = 0.8
+
+[node name="PlayerUI" parent="." instance=ExtResource("7_a3qrl")]
+
+[node name="MazeLoop" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_w4h4t")
+volume_db = -15.0
+pitch_scale = 0.8
+autoplay = true
+
+[node name="die_area" parent="." instance=ExtResource("9_8h5i2")]
+position = Vector2(-61, 51)
