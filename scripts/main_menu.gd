@@ -9,7 +9,7 @@ extends MarginContainer
 const intro_scene = preload("res://scenes/ui/intro/intro.tscn") 
 @onready var intro: Node2D
 
-const demo = preload("res://scenes/levels/maps/Mapa 1.tscn")
+const level_manager = preload("res://scenes/levels/_level_manager.tscn")
 
 func _ready():
 	buttons.append(play)
@@ -38,7 +38,7 @@ func _process(_delta):
 
 func _on_play_pressed():
 	Global.play_confirm()
-	get_tree().change_scene_to_packed(demo)
+	get_tree().change_scene_to_packed(level_manager)
 	
 
 func _on_credits_pressed():

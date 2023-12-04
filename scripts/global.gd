@@ -13,7 +13,7 @@ signal bullet_notifier(bullet_counter: int)
 signal gun_notifier(value: bool)
 
 ## Escena del menu para tenerla siempre cargada
-var main_menu = preload("res://scenes/ui/main_menu.tscn")
+var main_menu: PackedScene = preload("res://scenes/ui/main_menu.tscn")
 var show_intro: bool = false
 
 ## Estado de vida del personaje
@@ -98,3 +98,23 @@ State getter for gun state
 func set_gun_picked(value: bool) -> void:
 	has_gun = value
 	gun_notifier.emit(value)
+	
+	
+	
+###### Level selection #######
+
+@export var levels: Array[PackedScene]
+
+var current_idx_level: int = 0
+
+func update_idx_lvl(idx: int):
+	current_idx_level = idx
+
+func get_next_level() -> PackedScene:
+	current_idx_level += 1
+	if len(levels) > current_idx_level and levels[current_idx_level]:
+		return levels[current_idx_level]
+	else:
+		return main_menu
+		
+##############################
