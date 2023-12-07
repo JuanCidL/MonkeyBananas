@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://dpb2v7thpp5ew"]
+[gd_scene load_steps=15 format=3 uid="uid://dpb2v7thpp5ew"]
 
 [ext_resource type="Script" path="res://scripts/global.gd" id="1_pkgw5"]
 [ext_resource type="AudioStream" uid="uid://cj714t1nkqk7l" path="res://assets/sounds/sfx/confirm.wav" id="2_4t5d3"]
 [ext_resource type="PackedScene" uid="uid://otcxrtub651m" path="res://scenes/levels/tutorial/tutorial_1.tscn" id="2_wng3r"]
 [ext_resource type="AudioStream" uid="uid://b5q7l74fqaj3f" path="res://assets/sounds/sfx/back.wav" id="3_3qpts"]
 [ext_resource type="PackedScene" uid="uid://itpeoxapyrtx" path="res://scenes/levels/tutorial/tutorial_2.tscn" id="3_ca58d"]
+[ext_resource type="PackedScene" uid="uid://bslraahg6x3j3" path="res://scenes/levels/maps/another_level.tscn" id="4_ir5l1"]
 [ext_resource type="PackedScene" uid="uid://d4i1pga22f773" path="res://scenes/levels/maps/level_3.tscn" id="4_n6lgw"]
 [ext_resource type="AudioStream" uid="uid://bfrjl3bci3ci0" path="res://assets/sounds/sfx/shot.wav" id="4_ojax5"]
 [ext_resource type="AudioStream" uid="uid://1ty3ro0e3db0" path="res://assets/sounds/sfx/portal.mp3" id="5_2hckx"]
@@ -16,7 +17,7 @@
 
 [node name="global" type="Node"]
 script = ExtResource("1_pkgw5")
-levels = Array[PackedScene]([ExtResource("2_wng3r"), ExtResource("3_ca58d"), ExtResource("4_n6lgw"), ExtResource("5_v1kqt"), ExtResource("6_ctuip")])
+levels = Array[PackedScene]([ExtResource("2_wng3r"), ExtResource("3_ca58d"), ExtResource("4_ir5l1"), ExtResource("4_n6lgw"), ExtResource("5_v1kqt"), ExtResource("6_ctuip")])
 
 [node name="Confirm" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_4t5d3")

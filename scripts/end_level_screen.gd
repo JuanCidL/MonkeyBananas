@@ -63,6 +63,7 @@ func _on_resume_pressed():
 	
 func _on_restart_pressed():
 	Global.play_back()
+	Global.current_idx_level -= 1
 	get_tree().reload_current_scene()
 	_pause()
 	

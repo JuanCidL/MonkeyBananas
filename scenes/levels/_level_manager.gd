@@ -10,7 +10,7 @@ func _ready():
 	if (len(levels)):
 		var row_counter: int = 0 # Contador de niveles por fila
 		var level_counter: int = 0
-		var error_img: Image = Image.load_from_file("res://assets/screenshots/-1.png")
+		var error_img = load("res://assets/screenshots/-1.png")
 		v_box_container.add_theme_constant_override("separation", 15)
 	
 		## Row properties
@@ -31,15 +31,15 @@ func _ready():
 				var level_button: Button = Button.new()
 				
 				## Screenshots manage
-				var screenshot: Image = Image.new()
+				var screenshot: CompressedTexture2D
 				if (ResourceLoader.exists(screenshot_path+str(level_counter-1)+".png")):
-					screenshot.load(screenshot_path+str(level_counter-1)+".png")
+					screenshot = load(screenshot_path+str(level_counter-1)+".png")
 				else:
 					screenshot = error_img
 				
-				screenshot.resize(50, 50)
-				var texture: Texture2D = ImageTexture.create_from_image(screenshot)
-				level_button.icon = texture
+				#screenshot.resize(50, 50)
+				#var texture: Texture2D = ImageTexture.create_from_image(screenshot)
+				level_button.icon = screenshot
 					
 				_set_level(level_button, level)
 				row.add_child(level_button)
