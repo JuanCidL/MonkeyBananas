@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://j1y1g2wt05xg"]
+[gd_scene load_steps=17 format=3 uid="uid://j1y1g2wt05xg"]
 
 [ext_resource type="Script" path="res://scenes/levels/win_demo.gd" id="1_cfdnd"]
 [ext_resource type="Texture2D" uid="uid://cbr7rnvv4ru8n" path="res://assets/backgrounds/Space Background.png" id="1_vk0vt"]
@@ -14,7 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://dkisjxciy6xkn" path="res://scenes/terrain/traps/tile_traps.tscn" id="8_ujbx1"]
 [ext_resource type="PackedScene" uid="uid://0oshvretw2uy" path="res://scenes/terrain/win_condition.tscn" id="9_nn6a3"]
 [ext_resource type="AudioStream" uid="uid://cl6htg8npdoum" path="res://assets/sounds/sfx/Retro Success Melody 01 - sawtooth lead 1.wav" id="10_2dfjd"]
-[ext_resource type="PackedScene" uid="uid://pidk2fxu1tlg" path="res://scenes/levels/demo_gun.tscn" id="11_vcp14"]
 [ext_resource type="AudioStream" uid="uid://2f6yfihxxu2e" path="res://assets/sounds/music/Density_Time_MAZE_loop.mp3" id="12_42la7"]
 [ext_resource type="PackedScene" uid="uid://csbhrrpjvdb1y" path="res://scenes/terrain/traps/die_area.tscn" id="14_4f5t8"]
 
@@ -113,7 +112,6 @@ position = Vector2(488, 184)
 [node name="Container" parent="CanvasLayer" instance=ExtResource("8_fcm5q")]
 
 [node name="EndLevelScreen" parent="CanvasLayer" instance=ExtResource("7_kyuxm")]
-n_lvl = ExtResource("11_vcp14")
 
 [node name="TileTraps" parent="." instance=ExtResource("8_ujbx1")]
 layer_0/tile_data = PackedInt32Array(393264, 0, 131072, 393265, 0, 131072, 393266, 0, 131072, 393267, 0, 131072, 393268, 0, 131072, 393275, 0, 131072, 393274, 0, 131072, 393273, 0, 131072, 393272, 0, 131072, 393271, 0, 131072, 393270, 0, 131072, 393269, 0, 131072, 393277, 0, 131072, 393263, 0, 131072, 393262, 0, 131072, 393276, 0, 131072, 393278, 0, 131072, 393279, 0, 131072, 393280, 0, 131072, 393281, 0, 131072, 393282, 0, 131072)

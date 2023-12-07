@@ -15,7 +15,7 @@ var main_menu = Button.new()
 ## Variable para ver si ya se agregó el boton de next level
 var nl_added = false
 ## Escena del siguiente nivel
-@export var n_lvl = PackedScene
+@onready var n_lvl: PackedScene = Global.get_next_level()
 
 
 # Called when the node enters the scene tree for the first time.
@@ -82,6 +82,8 @@ func _on_win_condition(value: bool):
 		## Se agrega el boton de siguiente nivel y se posiciona en lo mas alto
 		## tambien se elimina el boton de resume
 		buttons.remove_child(resume)
+		if not n_lvl:
+			n_lvl = Global.get_next_level()
 		buttons.add_child(next_level)
 		buttons.move_child(next_level, 0)
 		nl_added = true
